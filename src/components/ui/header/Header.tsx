@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Inter',
   },
   appBarColors: {
-    backgroundColor: color.transparent,
+    backgroundColor: "transparent !important",
     boxShadow: "none !important",
   },
   tabs: {
