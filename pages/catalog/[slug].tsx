@@ -119,7 +119,7 @@ export default function ProductPage({ product, setPageValue }: Props) {
   const handleOpen = () => setOpen(!open)
 
   return (
-    <Box>
+    <Box mt={25}>
       <CartSummary
         open={open}
         handleOpen={handleOpen}
