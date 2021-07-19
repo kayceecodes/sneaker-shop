@@ -66,7 +66,6 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Inter',
   },
   appBarColors: {
-    color: color.dimGray,
     backgroundColor: color.transparent,
     boxShadow: "none !important",
   },
@@ -96,8 +95,8 @@ export default function Header(props: Props) {
       link: '/catalog',
       activeIndex: 1,
     },
-    { name: 'Contact Us', link: '/contact-us', activeIndex: 2 },
-    { name: 'Cart', link: '/cart', activeIndex: 3 },
+    // { name: 'Contact Us', link: '/contact-us', activeIndex: 2 },
+    { name: 'Cart', link: '/cart', activeIndex: 2 },
   ]
 
   useEffect(() => {
@@ -134,8 +133,6 @@ export default function Header(props: Props) {
   )
 
   return (
-    <>
-    <Box mb={15}>
       <HideOnScroll>
         <AppBar position="fixed" classes={{root: classes.appBarColors}}>
           <Toolbar>
@@ -149,7 +146,5 @@ export default function Header(props: Props) {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      </Box>
-    </>
   )
 }

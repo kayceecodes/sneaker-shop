@@ -36,47 +36,42 @@ const baseProps: CatalogType = {
       title: '5th Title',
       variants: [
         {
-          id: "2034 A",
+          id: '2034 A',
           price: '55.00',
-          title: "4"
+          title: '4',
         },
       ],
-      size: "",
+      size: '',
       images: [{ id: 'img-id-2034', src: '/some-img2034' }],
       productType: 'Running',
       handle: '5th-handle',
-      options: [{}]
+      options: [{}],
     },
     {
       id: 2120,
       title: '6th Title',
-      variants: [
-        {   id: "4132",
-        price: '200.00',
-        title: "6"
-        },
-      ],
-      size: "",
+      variants: [{ id: '4132', price: '200.00', title: '6' }],
+      size: '',
       images: [{ id: 'img-id-2120', src: '/some-img2034' }],
       productType: 'Casual',
       handle: '6th-handle',
-      options: [{}]
+      options: [{}],
     },
     {
       id: 2209,
       title: '7th Title',
       variants: [
         {
-          id: "3241",
+          id: '3241',
           price: '150.00',
-          title: "5"
+          title: '5',
         },
       ],
-      size: "",
+      size: '',
       images: [{ id: 'img-id-2034', src: '/some-img2034' }],
       productType: 'Basketball',
       handle: '7th-handle',
-      options: [{}]
+      options: [{}],
     },
   ],
 }
@@ -108,19 +103,23 @@ describe('after each click of check box filter length of them changes according'
   test('click on under $60 and the lowest products will show', () => {
     userEvent.click(screen.getByLabelText('$0 - $60') /*$0 - $60*/)
     userEvent.click(screen.getByText(/Close/))
-
-    expect(screen.getAllByRole('listitem').length).toEqual(
-      PricesUnderSixty.length
-    )
+    waitFor(() => {
+      expect(screen.getAllByRole('listitem').length).toEqual(
+        PricesUnderSixty.length
+      )
+    })
   })
 
   test('click on over $180 and the highest products will show', () => {
     userEvent.click(screen.getByLabelText('over $180'))
     userEvent.click(screen.getByText(/Close/))
 
-    expect(screen.getAllByRole('listitem').length).toEqual(
-      PricesOverOneEighty.length
-    )
+    waitFor(() => {
+      expect(screen.getAllByRole('listitem').length).toEqual(
+        PricesOverOneEighty.length
+      )
+    })
+   
   })
 })
 
@@ -141,26 +140,36 @@ describe('after each click of a product type the length of products array change
     userEvent.click(screen.getByLabelText('Basketball'))
     userEvent.click(screen.getByText(/Close/))
 
-    expect(screen.getAllByRole('listitem').length).toEqual(
-      typeFilter('Basketball').length
-    )
+    waitFor(() => {
+      expect(screen.getAllByRole('listitem').length).toEqual(
+        typeFilter('Basketball').length
+      )
+    })
+
+    
   })
 
   test('click on Casual, product type of Casual will show', () => {
     userEvent.click(screen.getByLabelText('Casual'))
     userEvent.click(screen.getByText(/Close/))
 
-    expect(screen.getAllByRole('listitem').length).toEqual(
-      typeFilter('Casual').length
-    )
+    waitFor(() => {
+      expect(screen.getAllByRole('listitem').length).toEqual(
+        typeFilter('Casual').length
+      )
+    })
+
   })
 
   test('click on Running, product type of Running will show', () => {
     userEvent.click(screen.getByLabelText('Running'))
     userEvent.click(screen.getByText(/Close/))
 
-    expect(screen.getAllByRole('listitem').length).toEqual(
-      typeFilter('Running').length
-    )
+    waitFor(() => {
+      expect(screen.getAllByRole('listitem').length).toEqual(
+        typeFilter('Running').length
+      )
+    })
+
   })
 })

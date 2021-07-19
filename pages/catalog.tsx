@@ -103,7 +103,7 @@ export default function Catalog(props: Props) {
   return (
     <PageTransition pageAnimations={props.pageAnimations}>
         <Container maxWidth="xl">
-          <Box pr={3} pl={matches.mdUp ? 10 : 3}>
+          <Box pr={3} mt={10} pl={matches.mdUp ? 10 : 3}>
           <GridContainer justify="flex-start" width="100%">
             {
               <FilterPopover

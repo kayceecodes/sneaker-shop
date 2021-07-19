@@ -10,6 +10,7 @@ import { calcTotalCost, countTotalItems } from '@/src/utils/Calc'
 import { CSSProperties } from '@material-ui/styles'
 import { color } from '@/src/ColorPalette'
 import ItemCard from '@/components/cart/itemcard'
+import Box from '@material-ui/core/Box/Box'
 
 interface IProps {
   pageStyle: CSSProperties
@@ -115,26 +116,32 @@ export default function CartPage(props: IProps) {
       pageStyle={props.pageStyle}
       pageAnimations={props.pageAnimations}
     >
-      <Grid
-        direction="column"
-        justify="space-around"
-        alignItems="center"
-        xs={12}
-      >
-        <Stats lineItems={checkout?.lineItems} />
-        <ItemsList
-          lineItems={checkout?.lineItems}
-          countTotalItems={countTotalItems}
-        />
-        <Button
-          disabled={checkout?.lineItems.length === 0}
-          component={Link}
-          href={checkout?.webUrl ? checkout?.webUrl : '/'}
-          className={checkout.lineItems.length > 0 ? classes.checkoutBtn : classes.disabled}
+      <Box mt={15}>
+        <Grid
+          direction="column"
+          justify="space-around"
+          alignItems="center"
+          xs={12}
         >
-          Continue To Checkout
-        </Button>
-      </Grid>
+          <Stats lineItems={checkout?.lineItems} />
+          <ItemsList
+            lineItems={checkout?.lineItems}
+            countTotalItems={countTotalItems}
+          />
+          <Button
+            disabled={checkout?.lineItems.length === 0}
+            component={Link}
+            href={checkout?.webUrl ? checkout?.webUrl : '/'}
+            className={
+              checkout.lineItems.length > 0
+                ? classes.checkoutBtn
+                : classes.disabled
+            }
+          >
+            Continue To Checkout
+          </Button>
+        </Grid>
+      </Box>
     </PageTransition>
   )
 }

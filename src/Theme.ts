@@ -62,7 +62,7 @@ export default createMuiTheme({
       // main: white,
     },
     secondary: {
-      main: `${color.slateBlue}`,
+      main: `${color.caribbeanBlue}`,
     },
     error: {
       main: red.A400,

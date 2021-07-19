@@ -70,7 +70,7 @@ function MyApp(props: AppProps) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Header pageValue={pageValue} setPageValue={setPageValue} />
-        <div style={{ marginBottom: '60px' }} />
+        {/* <div style={{ marginBottom: '60px' }} /> */}
         <FramerMotionProvider>
           {(props) => (
             <AnimatePresence exitBeforeEnter>

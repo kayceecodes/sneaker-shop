@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography/Typography'
 import Box from '@material-ui/core/Box/Box'
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery'
 import theme from '@/src/Theme'
-export interface PriceRangeState {
+export interface PriceRangeState extends Record<string, boolean> {
   '$0 - $60': boolean
   '$60 - $120': boolean
   '$120 - $180': boolean
@@ -20,20 +20,9 @@ interface Props {
   handlePriceRangeChange: (event: any) => void
 }
 
-const useStyles = makeStyles((theme) => ({
-  sectionMargin: {
-    marginTop: '35px',
-    [theme.breakpoints.up('sm')]: {
-      marginTop: '60px',
-    },
-  },
-}))
-
 export default function PriceRange(props: Props) {
   const { priceRangeState, handlePriceRangeChange } = props
   const matches = { sm: useMediaQuery(theme.breakpoints.up('sm')) }
-
-  const classes = useStyles()
 
   return (
     <>

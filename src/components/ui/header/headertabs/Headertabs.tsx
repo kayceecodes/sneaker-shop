@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid/Grid'
 import { connect } from 'react-redux'
 import { color } from '@/src/ColorPalette'
 import { darken } from '@material-ui/core/styles/colorManipulator'
+import { useRouter } from 'next/router'
 
 interface IProps {
   pageValue: number
@@ -26,14 +27,13 @@ const useStyles = makeStyles((theme) => ({
   tab: {
     minWidth: 10,
     fontFamily: 'Arial',
-    color: darken(color.dimGray, 0.6),
     fontSize: '1.1rem',
     // fontWeight: 500,
     transition: 'color 0.3s',
     textTransform: 'none', // Remove the button transformation styles
     marginLeft: '2.5% !important',
     '&:hover': {
-      textDecoration: 'none',
+      textDecoration: 'none !important',
     },
   },
   tabs: {
@@ -46,6 +46,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Headertabs(props: IProps) {
   const classes = useStyles()
+  const router = useRouter()
+  let path = router.asPath
   const handleChange = (e: any, pageValue: number) => {
     e
     props.setPageValue(pageValue)
@@ -63,6 +65,9 @@ function Headertabs(props: IProps) {
       >
         {props.routes.map((route: Route) => (
           <Tab
+            style={{
+              color: path === '/' ? '#fff' : color.dimGray,
+            }}
             key={`${route.link} ${classes.tab}`}
             aria-owns={route.ariaOwns}
             aria-haspopup={props.anchorEl ? 'true' : undefined}
