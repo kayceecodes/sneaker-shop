@@ -18,7 +18,7 @@ import zIndex from '@material-ui/core/styles/zIndex'
 interface Props {
   pageAnimations: PageAnimations
   item: {
-    name: string
+    header: string
     description: string
     src: string
     images: { mobile: { src: string }; desktop: { src: string } }
@@ -111,7 +111,7 @@ function Item(props: Pick<Props, 'item'>) {
         <Button className={classes.shopNowBtn} component={Link} href="/catalog">
           Shop Now
         </Button>
-        <h1 className={classes.imgHeader}>Nike</h1>
+        <h1 className={classes.imgHeader}>{props.item.header}</h1>
       </div>
     </Paper>
   )
@@ -120,16 +120,16 @@ function Item(props: Pick<Props, 'item'>) {
 export default function Index({ pageAnimations }: Props) {
   var items = [
     {
-      name: 'Random Name #1',
+      header: 'Nike',
       description: 'Probably the most random thing you have ever seen!',
       images: {
         desktop: { src: './assets/images/hero-img-pile-of-sneakers.jpg' },
         mobile: { src: './assets/images/hero-img-pile-of-sneakers-9:12.jpg' },
       },
-      src: ''
+      src: '',
     },
     {
-      name: 'Random Name #2',
+      header: 'Just Skate',
       description: 'Probably the most random thing you have ever seen!',
       images: {
         desktop: { src: './assets/images/hero-img-street-skate.jpg' },
@@ -138,7 +138,7 @@ export default function Index({ pageAnimations }: Props) {
       src: ''
     },
     {
-      name: 'Random Name #3',
+      header: 'Just Run',
       description: '3 most probably the most random thing you have ever seen!',
       images: {
         desktop: { src: './assets/images/hero-img-beach-run.jpg' },
