@@ -14,6 +14,7 @@ import { color } from '@/src/ColorPalette'
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery'
 import theme from '@/src/Theme'
 import zIndex from '@material-ui/core/styles/zIndex'
+import GridContainer from '@/components/ui/grid/GridContainer'
 
 interface Props {
   pageAnimations: PageAnimations
@@ -44,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
   imgHeader: {
     position: 'absolute',
     top: '10%',
-    left: '70%',
-    fontSize: '2.5rem',
+    left: '15%',
+    fontSize: '1.5rem',
     color: color.offWhite,
     zIndex: 1,
     [theme.breakpoints.up('sm')]: {
@@ -54,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('lg')]: {
       fontSize: '3.7rem',
+      left: '70%',
     },
     [theme.breakpoints.up('xl')]: {
       fontSize: '4rem',
@@ -81,10 +83,12 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
     textTransform: 'none',
     color: color.offWhite,
-    border: '2px solid #ffffff9a',
+    border: '5px solid #ffffff3a',
     // backgroundColor: 'rgba(0,0,0, 0.15)',
-    padding: '5px 20px',
+    padding: '7px 30px',
     zIndex: 1,
+    fontSize: '0.75rem',
+    letterSpacing: '0.7px',
     '&:hover': {
       // border: '1px solid white',
     },
@@ -95,6 +99,17 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('lg')]: {
       fontSize: '1.55rem',
     },
+    '&:hover $underline': {
+      backgroundColor: color.caribbeanBlue,
+    },
+  },
+  underline: {
+    height: '2px',
+    width: '95%',
+    margin: '0 auto',
+    borderRadius: 2,
+    backgroundColor: 'transparent',
+    transition: 'background-color 0.3s'
   },
 }))
 
@@ -104,13 +119,8 @@ function Item(props: Pick<Props, 'item'>) {
   return (
     <Paper classes={{ root: classes.noShadow }}>
       <div className={classes.imgWrapper}>
-        <img
-          style={{ width: '100%' }}
-          src={props.item.src}
-        />
-        <Button className={classes.shopNowBtn} component={Link} href="/catalog">
-          Shop Now
-        </Button>
+        <img style={{ width: '100%' }} src={props.item.src} />
+
         <h1 className={classes.imgHeader}>{props.item.header}</h1>
       </div>
     </Paper>
@@ -120,36 +130,49 @@ function Item(props: Pick<Props, 'item'>) {
 export default function Index({ pageAnimations }: Props) {
   var items = [
     {
-      header: 'Nike',
-      description: 'Probably the most random thing you have ever seen!',
+      header: '',
+      description: '',
       images: {
-        desktop: { src: './assets/images/hero-img-pile-of-sneakers.jpg' },
-        mobile: { src: './assets/images/hero-img-pile-of-sneakers-9:12.jpg' },
+        desktop: {
+          src: './assets/images/hero/hero-img-pile-of-sneakers-9:6.jpg',
+        },
+        mobile: {
+          src: './assets/images/hero/hero-img-pile-of-sneakers-15:16.jpg',
+        },
       },
       src: '',
     },
     {
       header: 'Just Skate',
-      description: 'Probably the most random thing you have ever seen!',
+      description: '',
       images: {
-        desktop: { src: './assets/images/hero-img-street-skate.jpg' },
-        mobile: { src: './assets/images/hero-img-street-skate-9:12.jpg' },
+        desktop: { src: './assets/images/hero/hero-img-street-skate-9:6.jpg' },
+        mobile: { src: './assets/images/hero/hero-img-street-skate-15:16.jpg' },
       },
-      src: ''
+      src: '',
     },
     {
       header: 'Just Run',
-      description: '3 most probably the most random thing you have ever seen!',
+      description: '',
       images: {
-        desktop: { src: './assets/images/hero-img-beach-run.jpg' },
-        mobile: { src: './assets/images/hero-img-beach-run-9:12.jpg' },
+        desktop: { src: './assets/images/hero/hero-img-marathon-9:6.jpg' },
+        mobile: { src: './assets/images/hero/hero-img-marathon-15:16.jpg' },
       },
-      src: ''
+      src: '',
+    },
+    {
+      header: 'Just Jump',
+      description: '',
+      images: {
+        desktop: { src: './assets/images/hero/hero-img-shoot-ball-9:6.jpg' },
+        mobile: { src: './assets/images/hero/hero-img-shoot-ball-15:16.jpg' },
+      },
+      src: '',
     },
   ]
   const classes = useStyles()
   const matches = { sm: useMediaQuery(theme.breakpoints.up('sm')) }
-  let src: string = '' 
+  let src: string = ''
 
   return (
     <>
@@ -162,16 +185,27 @@ export default function Index({ pageAnimations }: Props) {
             }}
             indicatorContainerProps={{ style: { height: 0, margin: '-3px' } }}
             navButtonsAlwaysVisible={true}
-            navButtonsProps={{style: {zIndex: 2, opacity: 0.15}}}
+            navButtonsProps={{ style: { zIndex: 2, opacity: 0.15 } }}
           >
             {items.map((item, i) => {
               item.src = matches.sm
-              ? item.images.desktop.src as string
-              : item.images.mobile.src as string /* To Avoid functionality on an unmounted component */
-              return <Item key={i} item={item}  />
+                ? item.images.desktop.src
+                : item.images.mobile
+                    .src /* To Avoid functionality on an unmounted component */
+              return <Item key={i} item={item} />
             })}
             {/* <Image width='100%' height='auto' src='/assets/images/hero-img-1.jpg' /> */}
           </Carousel>
+          <Button
+            className={classes.shopNowBtn}
+            component={Link}
+            href="/catalog"
+          >
+            <GridContainer direction="column">
+              <>Shop Now</>
+              <div className={classes.underline} />
+            </GridContainer>
+          </Button>
         </div>
       </PageTransition>
     </>

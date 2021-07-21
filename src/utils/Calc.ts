@@ -34,9 +34,9 @@ export const calcTotalCost = (lineItems: any) => {
 // }
 
 export const countTotalItems = (lineItems: any) => {
-  let totalItems = 0;
+  let totalItems: number = 0;
 
   lineItems?.forEach((item: any) => totalItems = item.quantity + totalItems)
 
-  return totalItems > 0 ? totalItems : 'No Items';
+  return (totalItems).toString();
 };  

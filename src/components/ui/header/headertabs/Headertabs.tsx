@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { ReducerState, useContext } from 'react'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import makeStyles from '@material-ui/core/styles/makeStyles'
@@ -6,10 +6,14 @@ import Link from '../../../../Link'
 import { Route } from '../Header'
 import { MouseEvent } from '../../../../types/aliases'
 import Grid from '@material-ui/core/Grid/Grid'
-import { connect } from 'react-redux'
+import { connect, shallowEqual, useSelector } from 'react-redux'
 import { color } from '@/src/ColorPalette'
 import { darken } from '@material-ui/core/styles/colorManipulator'
 import { useRouter } from 'next/router'
+import Badge from '@material-ui/core/Badge/Badge'
+import ShoppingBasket from '@material-ui/icons/ShoppingBasket'
+import { CheckoutState } from '@/src/store/actions/actionCreators/checkout'
+import { countTotalItems } from '@/src/utils/Calc'
 
 interface IProps {
   pageValue: number
@@ -32,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
     transition: 'color 0.3s',
     textTransform: 'none', // Remove the button transformation styles
     marginLeft: '2.5% !important',
+    borderBottom: '2px solid rgba(0,0,0, 0.2)',
+    // padding: '0 1.4%',
     '&:hover': {
       textDecoration: 'none !important',
     },
@@ -52,6 +58,17 @@ function Headertabs(props: IProps) {
     e
     props.setPageValue(pageValue)
   }
+
+  const lineItems = useSelector(
+    (state: any) => state.checkoutReducer.lineItems,
+    shallowEqual
+  )
+
+  const cartIcon = (
+    <Badge badgeContent={countTotalItems(lineItems)} color="primary">
+      <ShoppingBasket color="secondary" />
+    </Badge>
+  )
 
   return (
     <>
@@ -75,9 +92,8 @@ function Headertabs(props: IProps) {
             component={Link}
             href={route.link}
             onMouseOver={route.mouseOver}
-            label={route.name}
+            label={route.link === '/cart' ? cartIcon : route.name}
           />
-          // {route.link === "'/shoppingcart'" ? shoppingcartIcon : null}
         ))}
       </Tabs>
     </>

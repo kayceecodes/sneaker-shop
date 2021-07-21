@@ -22,3 +22,7 @@
     X)Fix Cart summary to show correct number of items in cart 
     X)Add Price to each product in catalog
     X) Added More products with sneakers
+    Width of Options in EditQuantity.tsx in mobile view is too wide
+    Change color of header hamburger
+    Implement slide dialog
+    Implement Badge

@@ -119,7 +119,7 @@ const filterByProductType = (
   let keys = Object.keys(state).map((key) => key)
 
   keys.forEach((key: string, index: number) => {
-    console.log(key)
+    // console.log(key)
     if (state[key] === true) {
       filtered.push(
         ...items.filter((item: Product) => item.productType === key[0].toUpperCase() + key.slice(1))
@@ -127,7 +127,7 @@ const filterByProductType = (
     }
   })
 
-  console.log(filtered)
+  // console.log(filtered)
   for (let key in state) {
     if (state[key] === true) {
       return filtered

@@ -30,7 +30,7 @@ export async function getStaticProps() {
   })
     .product.fetchAll()
     .then((products) => {
-      console.log('Fetch All Products:', products)
+      // console.log('Fetch All Products:', products)
       return products
     })
     .catch((err) => {
@@ -132,7 +132,7 @@ export default function Catalog(props: Props) {
                 {filteredProducts.length === 0 ? (
                   <h3>No items match the criteria</h3>
                 ) : (
-                  loading ? <CircularProgress /> 
+                  loading ? <CircularProgress color="secondary" /> 
                   : 
                   filteredProducts?.map((product: Product) => (
                     <Grid key={product.title} container justify="center">

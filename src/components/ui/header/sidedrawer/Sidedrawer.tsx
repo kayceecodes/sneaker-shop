@@ -11,6 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Grid from "@material-ui/core/Grid/Grid";
+import { color } from "@/src/ColorPalette";
 
 interface IProps {
   pageValue: number;
@@ -24,16 +25,17 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
   },
   drawer: {
-    backgroundColor: '#dcdcdc',
+    backgroundColor: color.darkSlateGray,
   },
   drawerItem: {
     ...theme.typography,
-    color: theme.palette.common.dimGray,
+    color: theme.palette.common.offWhite,
     opacity: 0.7,
   },
   drawerIcon: {
     height: "35px",
     width: "35px",
+    color: '#fff'
   },
   drawerIconContainer: {
     marginLeft: "auto",
@@ -121,6 +123,7 @@ export default function Sidedrawer(props: IProps) {
         </List>
       </SwipeableDrawer>
       <IconButton
+        color="secondary"
         className={classes.drawerIconContainer}
         onClick={() => setOpenDrawer(!openDrawer)}
         disableRipple

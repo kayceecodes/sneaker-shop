@@ -1,7 +1,7 @@
 export const color = 
 {
   frostWhite: "#f3f8f9",
-  dimGray: "rgba(94,108,120, 0.95)",
+  dimGray: "rgba(94,108,120, 1)",
   darkSlateGray: "#252525",
   offWhite: "#f5f4f4",
   frostBlue: "#8ac4d0",

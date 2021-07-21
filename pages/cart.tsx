@@ -39,9 +39,6 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.common.cadetBlue,
     },
   },
-  circularProgressWrapper: {
-    margin: '80px auto 0px',
-  },
   disabled: {
     border: `1px solid #ddd`,
     textTransform: 'none',
@@ -58,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     border: `0.5px solid ${theme.palette.common.dimGray}`,
     backgroundColor: theme.palette.common.offWhite,
     borderRadius: '4px',
-    boxShadow: '0px 0px 20px rgba(0,0,0,0.15)',
+    boxShadow: '0px 0px 20px rgba(0,0,0,0.05)',
     [theme.breakpoints.up('sm')]: {
       width: '590px',
     },
@@ -116,7 +113,7 @@ export default function CartPage(props: IProps) {
       pageStyle={props.pageStyle}
       pageAnimations={props.pageAnimations}
     >
-      <Box mt={15}>
+      <Box mt={25}>
         <Grid
           direction="column"
           justify="space-around"

@@ -73,7 +73,7 @@ export default function ItemCard(props: CartItem) {
 };
 
   const LoadingProgress = ({children}: {children:ReactNode}) =>
-    loading ? <CircularProgress size={matches.sm ? 23 : 18} thickness={2} /> : <>{children}</>
+    loading ? <CircularProgress color="secondary" size={matches.sm ? 23 : 18} thickness={5} /> : <>{children}</>
 
   return (
     <Box my={1}>

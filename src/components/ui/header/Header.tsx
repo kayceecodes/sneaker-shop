@@ -62,12 +62,16 @@ function HideOnScroll(props: HideOnScrollProps) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  appbar: {
+  container: {  
     fontFamily: 'Inter',
+    [theme.breakpoints.up('sm')]: {
+      marginTop: 25,
+      paddingLeft: 20,
+    },
   },
-  appBarColors: {
-    backgroundColor: "transparent !important",
-    boxShadow: "none !important",
+  colors: {
+    backgroundColor: 'transparent !important',
+    boxShadow: 'none !important',
   },
   tabs: {
     color: '#fff',
@@ -133,18 +137,21 @@ export default function Header(props: Props) {
   )
 
   return (
-      <HideOnScroll>
-        <AppBar position="fixed" classes={{root: classes.appBarColors}}>
-          <Toolbar>
-            <Grid container justify="space-around" alignItems="center">
-              <Grid item xs={12}>
-                <Typography variant="body2" component="div">
-                  <Grid container>{matches ? sidedrawer : tabs}</Grid>
-                </Typography>
-              </Grid>
+    <HideOnScroll>
+      <AppBar
+        position="fixed"
+        classes={{ root: classes.colors + ' ' + classes.container }}
+      >
+        <Toolbar>
+          <Grid container justify="space-around" alignItems="center">
+            <Grid item xs={12}>
+              <Typography variant="body2" component="div">
+                <Grid container>{matches ? sidedrawer : tabs}</Grid>
+              </Typography>
             </Grid>
-          </Toolbar>
-        </AppBar>
-      </HideOnScroll>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    </HideOnScroll>
   )
 }
