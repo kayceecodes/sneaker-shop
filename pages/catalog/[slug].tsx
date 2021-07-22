@@ -12,12 +12,15 @@ import { lighten } from '@material-ui/core/styles/colorManipulator'
 import Box from '@material-ui/core/Box/Box'
 import Typography from '@material-ui/core/Typography/Typography'
 import ProductInput from '@/components/product/ProductInput'
-import AddToCart from '@/components/ui/btn/AddToCart'
-import { SectionMargin } from '@/components/ui/Section'
-import CartSummary from '@/components/product/CartSummary'
+// import AddToCart from '@/components/ui/btn/AddToCart'
+import { SectionBreak, SectionMargin } from '@/components/ui/Section'
+import CartSummary from '@/src/components/product/CartSummary'
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery'
 import theme from '@/src/Theme'
 import { extractTitle } from '@/src/utils/Parse'
+import { useDispatch } from 'react-redux'
+import { addToCheckout } from '@/src/store/actions/actionCreators/checkout'
+import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress'
 
 interface Props {
   product: Product
@@ -84,6 +87,54 @@ const useStyles = makeStyles((theme) => ({
     width: '180px',
   },
 }))
+function AddToCart({
+  itemValues,
+  variantId,
+  handleOpen,
+}: {
+  itemValues: CartItem
+  variantId: string
+  handleOpen: () => void
+}) {
+  const classes = useStyles()
+
+  const isDisabled = itemValues.size === 0 || itemValues.quantity === 0
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const setLoadTime = () => {
+    setLoading(true)
+    setTimeout(() => setLoading(false), 400)
+  }
+  const dispatch = useDispatch()
+  return (
+    <Button
+      className={classes.cartBtn}
+      variant="outlined"
+      disabled={isDisabled}
+      onClick={(e: any) => {
+        console.log('itemValues In BtnAddToCart: ', itemValues)
+        dispatch(
+          addToCheckout(
+            localStorage.checkout_id,
+            variantId,
+            itemValues.quantity
+          )
+        )
+        setLoadTime()
+        handleOpen()
+      }}
+    >
+      {loading ? (
+        <CircularProgress size={24} />
+      ) : (
+        <>
+          <div style={{ marginRight: '10px' }}>Add</div>
+          <Icon>add_shopping_cart</Icon>
+        </>
+      )}
+    </Button>
+  )
+}
 
 export default function ProductPage({ product, setPageValue }: Props) {
   const classes = useStyles()
@@ -119,19 +170,30 @@ export default function ProductPage({ product, setPageValue }: Props) {
   const handleOpen = () => setOpen(!open)
 
   return (
-    <Box mt={25}>
-      <CartSummary
+    <Box mt={matches.sm ? 25 : 10}>
+      {/* <CartSummary
         open={open}
         handleOpen={handleOpen}
         product={product}
         quantity={itemValues.quantity}
         setPageValue={setPageValue}
+      /> */}
+      <CartSummary
+        product={product}
+        quantity={itemValues.quantity}
+        handleOpen={handleOpen}
+        open={open}
       />
       <GridContainer width="100%" spacing={matches.sm ? 4 : 1} justify="center">
         <Button onClick={() => router.push('/catalog')} className={classes.btn}>
           <Icon className={classes.arrow}>arrow_back_ios</Icon>back
         </Button>
-        <Image width={matches.sm ? 300 : 290} height={matches.sm ? 300 : 290} src={product.images[0].src} />
+        <SectionBreak mt={10} />
+        <Image
+          width={matches.sm ? 300 : 290}
+          height={matches.sm ? 300 : 290}
+          src={product.images[0].src}
+        />
         <GridContainer
           justify="space-between"
           alignItems="center"

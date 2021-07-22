@@ -24,11 +24,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddToCart({ itemValues, variantId, handleOpen }: Props) {
   const classes = useStyles()
-
   const isDisabled = itemValues.size === 0 || itemValues.quantity === 0
   const [loading, setLoading] = useState<boolean>(false)
-
-  const temporaryLoad = () => {
+  const setLoadTime = () => {
     setLoading(true)
     setTimeout(() => setLoading(false), 400)
   }
@@ -41,7 +39,7 @@ export default function AddToCart({ itemValues, variantId, handleOpen }: Props) 
       onClick={(e: any) => {
         console.log('itemValues In BtnAddToCart: ', itemValues)
         dispatch(addToCheckout(localStorage.checkout_id, variantId, itemValues.quantity))
-        temporaryLoad()
+        setLoadTime()
         handleOpen()
       }}
     >

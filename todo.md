@@ -24,5 +24,6 @@
     X) Added More products with sneakers
     Width of Options in EditQuantity.tsx in mobile view is too wide
     Change color of header hamburger
-    Implement slide dialog
-    Implement Badge
+    Implement Slide Dialog
+    X)Implement Badge
+    X)Cart Icon Number of Items should update

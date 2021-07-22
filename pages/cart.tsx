@@ -11,8 +11,9 @@ import { CSSProperties } from '@material-ui/styles'
 import { color } from '@/src/ColorPalette'
 import ItemCard from '@/components/cart/itemcard'
 import Box from '@material-ui/core/Box/Box'
-
-interface IProps {
+import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery'
+import theme from '@/src/Theme'
+interface Props {
   pageStyle: CSSProperties
   pageAnimations: PageAnimations
   motions: Motions
@@ -21,8 +22,12 @@ interface IProps {
 }
 
 const useStyles = makeStyles((theme) => ({
+  boldText: {
+    fontWeight: 600,
+    color: color.charcoal
+  },
   cartDetailsBox: {
-    borderBottom: `2px solid ${color.dimGray}`,
+    borderBottom: `2px solid ${color.caribbeanBlue}`,
     padding: '20px 70px 30px',
   },
   checkoutBtn: {
@@ -36,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     // transition: 'color 0.3s',
     marginBottom: '60px',
     '&:hover': {
-      color: theme.palette.common.cadetBlue,
+      color: color.caribbeanBlue,
     },
   },
   disabled: {
@@ -94,26 +99,27 @@ const Stats = (props: any) => {
 
   return (
     <div className={classes.cartDetailsBox}>
-      {'Cart Total: $' + calcTotalCost(props.lineItems)}
+      <span className={classes.boldText}>{'Cart Total: '}</span> {'$' + calcTotalCost(props.lineItems)}
       <br />
-      {'Total Items in Cart: ' + countTotalItems(props.lineItems)}
+      <span className={classes.boldText}>{'Total Items in Cart: '}</span>{countTotalItems(props.lineItems)}
     </div>
   )
 }
 
-export default function CartPage(props: IProps) {
+export default function CartPage(props: Props) {
   const checkout = useSelector(
     (state: any) => state.checkoutReducer.checkout,
     shallowEqual
   )
   const classes = useStyles()
+  const matches = {sm: useMediaQuery(theme.breakpoints.up('sm'))}
 
   return (
     <PageTransition
       pageStyle={props.pageStyle}
       pageAnimations={props.pageAnimations}
     >
-      <Box mt={25}>
+      <Box mt={matches.sm ? 25 : 10}>
         <Grid
           direction="column"
           justify="space-around"

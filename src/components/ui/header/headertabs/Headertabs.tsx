@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
   // },
   tab: {
     minWidth: 10,
-    fontFamily: 'Arial',
-    fontSize: '1.1rem',
+    fontWeight: 400,
+    fontSize: '1.3rem',
     // fontWeight: 500,
     transition: 'color 0.3s',
     textTransform: 'none', // Remove the button transformation styles
@@ -60,7 +60,7 @@ function Headertabs(props: IProps) {
   }
 
   const lineItems = useSelector(
-    (state: any) => state.checkoutReducer.lineItems,
+    (state: any) => state.checkoutReducer.checkout.lineItems,
     shallowEqual
   )
 

@@ -42,7 +42,7 @@ describe('after clicking Select button ', () => {
   })
   test('at least 1 option in select should show in select tag', () => {
     expect(screen.getAllByRole('option')[0]).toBeInTheDocument()
-  })
+  })  
   test('Add Button should not be disabled ', () => {
     userEvent.click(screen.getByText(/6.5/))
     expect(screen.getByText(/Add/)).not.toBeDisabled()

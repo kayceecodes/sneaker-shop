@@ -15,6 +15,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery'
 import theme from '@/src/Theme'
 import zIndex from '@material-ui/core/styles/zIndex'
 import GridContainer from '@/components/ui/grid/GridContainer'
+import ProductCategories from '@/src/landingpage/ProductCategories'
 
 interface Props {
   pageAnimations: PageAnimations
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: '10%',
     left: '15%',
-    fontSize: '1.5rem',
+    font: '1.5rem Inter',
     color: color.offWhite,
     zIndex: 1,
     [theme.breakpoints.up('sm')]: {
@@ -77,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
   },
   shopNowBtn: {
-    position: 'fixed',
+    position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -85,31 +86,31 @@ const useStyles = makeStyles((theme) => ({
     color: color.offWhite,
     border: '5px solid #ffffff3a',
     // backgroundColor: 'rgba(0,0,0, 0.15)',
-    padding: '7px 30px',
+    padding: '7px 20px',
     zIndex: 1,
-    fontSize: '0.75rem',
+    fontSize: '1.1rem',
     letterSpacing: '0.7px',
+    borderRadius: '3px',
+    transition: 'border 0.3s',
     '&:hover': {
+      border: '5px solid #ffffffbb'
       // border: '1px solid white',
     },
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '1.1rem',
-      padding: '10px 40px',
-    },
     [theme.breakpoints.up('lg')]: {
-      fontSize: '1.55rem',
+      fontSize: '1.6rem',
+      padding: '10px 40px',
     },
     '&:hover $underline': {
       backgroundColor: color.caribbeanBlue,
     },
   },
   underline: {
-    height: '2px',
+    height: '3px',
     width: '95%',
     margin: '0 auto',
-    borderRadius: 2,
+    borderRadius: 1,
     backgroundColor: 'transparent',
-    transition: 'background-color 0.3s'
+    transition: 'background-color 0.3s',
   },
 }))
 
@@ -175,39 +176,35 @@ export default function Index({ pageAnimations }: Props) {
   let src: string = ''
 
   return (
+    <PageTransition pageStyle={{backgroundColor: '#111'}} pageAnimations={pageAnimations}>
     <>
-      <PageTransition pageAnimations={pageAnimations}>
-        <div className={classes.relativeContainer}>
-          <div className={classes.overlay} />
-          <Carousel
-            indicatorIconButtonProps={{
-              style: { opacity: 0, color: 'transparent' },
-            }}
-            indicatorContainerProps={{ style: { height: 0, margin: '-3px' } }}
-            navButtonsAlwaysVisible={true}
-            navButtonsProps={{ style: { zIndex: 2, opacity: 0.15 } }}
-          >
-            {items.map((item, i) => {
-              item.src = matches.sm
-                ? item.images.desktop.src
-                : item.images.mobile
-                    .src /* To Avoid functionality on an unmounted component */
-              return <Item key={i} item={item} />
-            })}
-            {/* <Image width='100%' height='auto' src='/assets/images/hero-img-1.jpg' /> */}
-          </Carousel>
-          <Button
-            className={classes.shopNowBtn}
-            component={Link}
-            href="/catalog"
-          >
-            <GridContainer direction="column">
-              <>Shop Now</>
-              <div className={classes.underline} />
-            </GridContainer>
-          </Button>
-        </div>
-      </PageTransition>
+      <div className={classes.relativeContainer}>
+        <div className={classes.overlay} />
+        <Button className={classes.shopNowBtn} component={Link} href="/catalog">
+          <GridContainer direction="column">
+            <>Shop Now</>
+            <div className={classes.underline} />
+          </GridContainer>
+        </Button>
+        <Carousel
+          indicatorIconButtonProps={{
+            style: { opacity: 0, color: 'transparent' },
+          }}
+          indicatorContainerProps={{ style: { height: 0, margin: '-3px' } }}
+          navButtonsAlwaysVisible={true}
+          navButtonsProps={{ style: { zIndex: 2, opacity: 0.15 } }}
+        >
+          {items.map((item, i) => {
+            item.src = matches.sm
+              ? item.images.desktop.src
+              : item.images.mobile
+                  .src /* To Avoid functionality on an unmounted component */
+            return <Item key={i} item={item} />
+          })}
+        </Carousel>
+      </div>
+      <ProductCategories />
     </>
+    </PageTransition>
   )
 }

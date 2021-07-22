@@ -84,6 +84,7 @@ export default createMuiTheme({
       fontSize: '0.85rem',
       fontFamily: 'Inter',
       lineHeight: 1.6,
+      textTransform: "none",
       [breakpoints.up("sm")]: {
         fontSize: '0.98rem'
       },
@@ -93,22 +94,27 @@ export default createMuiTheme({
       fontSize: '0.75rem',
       fontFamily: 'Inter',
       lineHeight: 1.55,
+      textTransform: "none",
       [breakpoints.up("sm")]: {
         fontSize: '0.85rem'
       },
     },
     h2: {
-      fontFamily: 'Arial',
+      fontFamily: 'Inter',
       color: color.dimGray,
-      fontSize: "1.5rem",
+      fontSize: "1.9rem",
+      fontWeight: 500,
       letterSpacing: '0.6px',
       wordSpacing: '3.5px',
       [breakpoints.up("sm")]: {
-        fontSize: '2rem'
+        fontSize: '2.4rem'
+      },
+      [breakpoints.up("lg")]: {
+        fontSize: '3rem'
       },
     },
     h3: {
-      fontFamily: 'Arial',
+      fontFamily: 'Inter',
       color: color.dimGray,
       fontSize: "1.15rem",
       letterSpacing: '0.5px',
@@ -117,16 +123,27 @@ export default createMuiTheme({
       },
     },
     h4: {
-      fontFamily: 'Arial',
+      fontFamily: 'Inter',
       color: color.dimGray,
       fontSize: "0.9rem",
+      fontWeight: 500,
       letterSpacing: '0.2px',
       [breakpoints.up("sm")]: {
         fontSize: '1.05rem'
       },
     },
     h5: {
-      fontFamily: 'Roboto',
+      fontFamily: 'Inter',
+      fontWeight: 450,
+      color: color.dimGray,
+      fontSize: '0.85rem',
+      letterSpacing: '0.2px',
+      [breakpoints.up("sm")]: {
+        fontSize: '1.05rem'
+      },
+    },
+    h6: {
+      fontFamily: 'Inter',
       fontWeight: 450,
       color: color.dimGray,
       fontSize: '0.85rem',
@@ -136,14 +153,14 @@ export default createMuiTheme({
       },
     },
     tab: {
-      fontFamily: "Lora",
+      fontFamily: "Inter",
       textTransform: "none",
       fontWeight: 700,
       fontSize: "1rem",
     },
     container: {
       color: "#c1c1c1",
-      fontFamily: "Lora",
+      fontFamily: "Inter",
       textTransform: "none",
       fontSize: "0.8rem",
     },
@@ -163,7 +180,7 @@ export default createMuiTheme({
     caption2: {
       color: color.dimGray,
       opacity: '0.9',
-      fontFamily: 'Arial',
+      fontFamily: 'Inter',
       fontSize: '0.95rem',
       fontWeight: 400,
       textAlign: 'center',
@@ -173,8 +190,9 @@ export default createMuiTheme({
     subtitle1: {
       color: color.dimGray,
       fontSize: '0.75rem',
-      fontFamily: 'Arial',
+      fontFamily: 'Inter',
       lineHeight: 1.6,
+      textTransform: "none",
       [breakpoints.up("sm")]: {
         fontSize: '0.85rem'
       },

@@ -3,7 +3,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 384 384" style="enable-background:new 0 0 384 384;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#5e6c78;} <!-- main COLOR CHANGE-->
+	.st0{fill:#ddd;} <!-- main COLOR CHANGE-->
 </style>
 <path class="st0" d="M272,32c21.2,0,41.3,8.4,56.5,23.5S352,90.8,352,112v160c0,21.2-8.4,41.3-23.5,56.5S293.2,352,272,352H112
 	c-21.2,0-41.3-8.4-56.5-23.5S32,293.2,32,272V112c0-21.2,8.4-41.3,23.5-56.5S90.8,32,112,32H272 M272,0H112C50.4,0,0,50.4,0,112v160

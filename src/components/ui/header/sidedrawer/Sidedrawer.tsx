@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-
 import Link from "../../../../Link"
 import { Route } from "../Header";
-
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import ListItem from "@material-ui/core/ListItem";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
@@ -25,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
   },
   drawer: {
-    backgroundColor: color.darkSlateGray,
+    backgroundColor: `${color.darkSlateGray} !important`,
   },
   drawerItem: {
     ...theme.typography,
@@ -68,7 +66,8 @@ export default function Sidedrawer(props: IProps) {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
-        classes={{ paper: classes.drawer }}
+        className={classes.drawer}
+        classes={{ paper: classes.drawer, root: classes.drawer }}
       >
         <div className={classes.toolbarMargin} />
         <List disablePadding>

@@ -19,12 +19,18 @@ import { useDispatch } from 'react-redux'
 import { deleteItem, updateLineItemQuantity } from '@/src/store/actions/actionCreators/checkout'
 import { AnyAction } from 'redux'
 import { extractColor, extractTitle } from '@/src/utils/Parse'
+import { color } from '@/src/ColorPalette'
 
 const useStyles = makeStyles((theme) => ({
+  boldText: {
+    fontWeight: 600,
+    color: color.charcoal
+  },
   btn: {
     fontSize: '0.65rem',
     textTransform: 'none',
-
+    letterSpacing: '1px',
+    fontWeight: 600,
     color: `${theme.palette.primary.main}`,
     [theme.breakpoints.up('sm')]: {
       fontSize: '0.85rem',
@@ -94,15 +100,15 @@ export default function ItemCard(props: CartItem) {
               spacing={1}
               direction="column"
             >
-              <strong>{extractTitle(props.title)}</strong>
+              <strong className={classes.boldText}>{extractTitle(props.title)}</strong>
               <div>{extractColor(props.title)}</div>
-              <div>Size {props.size}</div>
+              <div><span className={classes.boldText}>Size</span> {props.size}</div>
               <div>${props.price}</div>
             </GridContainer>
             <Box width={WidthOfQuantityComponents}>
               {!isShowing ? (
                 <div>
-                  Quantity
+                  <span className={classes.boldText}>Quantity</span>
                   <br />
                   {quantity}
                 </div>
@@ -119,7 +125,7 @@ export default function ItemCard(props: CartItem) {
                   {isShowing ? (
                     <Button
                       disabled={loading === true}
-                      className={classes.btn}
+                      className={classes.btn + ' ' + classes.boldText}
                       onClick={() => {
                         setTimeout(() => {setIsShowing(false)}, 500)
                         handleProgress(loading, setLoading, 500)
