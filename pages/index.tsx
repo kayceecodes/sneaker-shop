@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '3px',
     transition: 'border 0.3s',
     '&:hover': {
-      border: '5px solid #ffffffbb'
+      border: '5px solid #ffffffbb',
       // border: '1px solid white',
     },
     [theme.breakpoints.up('lg')]: {
@@ -116,11 +116,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Item(props: Pick<Props, 'item'>) {
   const classes = useStyles()
-
+  const matches = { sm: useMediaQuery(theme.breakpoints.up('sm')) }
   return (
     <Paper classes={{ root: classes.noShadow }}>
       <div className={classes.imgWrapper}>
-        <img style={{ width: '100%' }} src={props.item.src} />
+        <img src={props.item.src}  style={matches.sm ? { minHeight: '100vh', minWidth: '100%'} : { height: '70vh', minWidth: '100%'}} />
 
         <h1 className={classes.imgHeader}>{props.item.header}</h1>
       </div>
@@ -176,35 +176,44 @@ export default function Index({ pageAnimations }: Props) {
   let src: string = ''
 
   return (
-    <PageTransition pageStyle={{backgroundColor: '#111'}} pageAnimations={pageAnimations}>
-    <>
-      <div className={classes.relativeContainer}>
-        <div className={classes.overlay} />
-        <Button className={classes.shopNowBtn} component={Link} href="/catalog">
-          <GridContainer direction="column">
-            <>Shop Now</>
-            <div className={classes.underline} />
-          </GridContainer>
-        </Button>
-        <Carousel
-          indicatorIconButtonProps={{
-            style: { opacity: 0, color: 'transparent' },
-          }}
-          indicatorContainerProps={{ style: { height: 0, margin: '-3px' } }}
-          navButtonsAlwaysVisible={true}
-          navButtonsProps={{ style: { zIndex: 2, opacity: 0.15 } }}
-        >
-          {items.map((item, i) => {
-            item.src = matches.sm
-              ? item.images.desktop.src
-              : item.images.mobile
-                  .src /* To Avoid functionality on an unmounted component */
-            return <Item key={i} item={item} />
-          })}
-        </Carousel>
-      </div>
-      <ProductCategories />
-    </>
+    <PageTransition
+      pageStyle={{ backgroundColor: '#111' }}
+      pageAnimations={pageAnimations}
+    >
+      <>
+        <div className={classes.relativeContainer}>
+          <div className={classes.overlay} />
+          <Button
+            className={classes.shopNowBtn}
+            component={Link}
+            href="/catalog"
+          >
+            <GridContainer direction="column">
+              <>Shop Now</>
+              <div className={classes.underline} />
+            </GridContainer>
+          </Button>
+          <Carousel
+            indicatorIconButtonProps={{
+              style: { opacity: 0, color: 'transparent' },
+            }}
+            indicatorContainerProps={{ style: { height: 0, margin: '-3px' } }}
+            navButtonsAlwaysVisible={true}
+            navButtonsProps={{ style: { zIndex: 2, opacity: 0.15 } }}
+          >
+            {items.map((item, i) => {
+              item.src = matches.sm
+                ? item.images.desktop.src
+                : item.images.mobile
+                    .src /* To Avoid functionality on an unmounted component */
+              return <Item key={i} item={item} />
+            })}
+          </Carousel>
+        </div>
+        <div style={{ position: 'relative' }}>
+          <ProductCategories />
+        </div>
+      </>
     </PageTransition>
   )
 }
