@@ -95,7 +95,7 @@ export default function Header(props: Props) {
   const routes: Route[] = [
     { name: 'Home', link: '/', activeIndex: 0 },
     {
-      name: 'Catalog',
+      name: 'Sneakers',
       link: '/catalog',
       activeIndex: 1,
     },

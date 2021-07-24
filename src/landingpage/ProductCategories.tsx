@@ -16,7 +16,11 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {
       paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(4),
+      paddingBottom: theme.spacing(12),
+      [theme.breakpoints.up('sm')]: {
+        paddingTop: theme.spacing(15),
+        paddingBottom: theme.spacing(20),
+      },
     },
     images: {
       marginTop: theme.spacing(8),
@@ -34,6 +38,7 @@ const styles = (theme: Theme) =>
         height: 100,
       },
       '&:hover': {
+        cursor: 'default',
         zIndex: 1,
       },
       '&:hover $imageBackdrop': {
@@ -45,7 +50,7 @@ const styles = (theme: Theme) =>
       '&:hover $imageTitle': {
         border: '4px solid #ffffffaa',
         backgroundColor: 'rgba(0,0,0,0.2)',
-    },
+      },
     },
     imageButton: {
       position: 'absolute',
@@ -131,12 +136,19 @@ function ProductCategories(props: WithStyles<typeof styles>) {
       url: 'assets/images/categories/baseball-field.jpg',
       title: 'Field',
       width: '24%',
-    }
+    },
   ]
 
   return (
     <Container className={classes.root} component="section">
-      <Typography style={{textAlign: 'center', color: darken(color.offWhite, 0.1), fontWeight: 500 }} variant="h2">
+      <Typography
+        style={{
+          textAlign: 'center',
+          color: darken(color.offWhite, 0.1),
+          fontWeight: 500,
+        }}
+        variant="h2"
+      >
         Pick Your Terrain
       </Typography>
       <div className={classes.images}>

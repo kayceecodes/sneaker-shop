@@ -1,7 +1,4 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
 import Link from '../src/Link'
 import { PageAnimations } from '@/src/types/interfaces/animation'
 import PageTransition from '@/src/components/ui/hoc/PageTransition'
@@ -13,9 +10,9 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import { color } from '@/src/ColorPalette'
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery'
 import theme from '@/src/Theme'
-import zIndex from '@material-ui/core/styles/zIndex'
 import GridContainer from '@/components/ui/grid/GridContainer'
 import ProductCategories from '@/src/landingpage/ProductCategories'
+import Footer from '@/src/landingpage/Footer'
 
 interface Props {
   pageAnimations: PageAnimations
@@ -84,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
     textTransform: 'none',
     color: color.offWhite,
-    border: '5px solid #ffffff3a',
+    border: '9px solid #ffffff3a',
     // backgroundColor: 'rgba(0,0,0, 0.15)',
     padding: '7px 20px',
     zIndex: 1,
@@ -93,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '3px',
     transition: 'border 0.3s',
     '&:hover': {
-      border: '5px solid #ffffffbb',
+      border: '9px solid #ffffffbb',
       // border: '1px solid white',
     },
     [theme.breakpoints.up('lg')]: {
@@ -108,7 +105,6 @@ const useStyles = makeStyles((theme) => ({
     height: '3px',
     width: '95%',
     margin: '0 auto',
-    borderRadius: 1,
     backgroundColor: 'transparent',
     transition: 'background-color 0.3s',
   },
@@ -120,7 +116,14 @@ function Item(props: Pick<Props, 'item'>) {
   return (
     <Paper classes={{ root: classes.noShadow }}>
       <div className={classes.imgWrapper}>
-        <img src={props.item.src}  style={matches.sm ? { minHeight: '100vh', minWidth: '100%'} : { height: '70vh', minWidth: '100%'}} />
+        <img
+          src={props.item.src}
+          style={
+            matches.sm
+              ? { minHeight: '100vh', minWidth: '100%' }
+              : { height: '70vh', minWidth: '100%' }
+          }
+        />
 
         <h1 className={classes.imgHeader}>{props.item.header}</h1>
       </div>
@@ -210,9 +213,8 @@ export default function Index({ pageAnimations }: Props) {
             })}
           </Carousel>
         </div>
-        <div style={{ position: 'relative' }}>
-          <ProductCategories />
-        </div>
+        <ProductCategories />
+        <Footer />
       </>
     </PageTransition>
   )

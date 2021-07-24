@@ -102,7 +102,7 @@ export default createMuiTheme({
     h2: {
       fontFamily: 'Inter',
       color: color.dimGray,
-      fontSize: "1.9rem",
+      fontSize: "1.6rem",
       fontWeight: 500,
       letterSpacing: '0.6px',
       wordSpacing: '3.5px',
@@ -166,7 +166,7 @@ export default createMuiTheme({
     },
     caption: {
       color: color.dimGray,
-      opacity: '0.9',
+      opacity: '0.75',
       fontFamily: 'Inter',
       fontSize: '0.68rem',
       fontWeight: 400,

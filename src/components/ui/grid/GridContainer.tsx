@@ -13,9 +13,7 @@ import React, { HtmlHTMLAttributes, ReactNode } from 'react'
 interface Container {
   alignContent: GridContentAlignment
   alignItems: GridItemsAlignment
-  //   container: boolean;
   direction: GridDirection
-  //   item: boolean;
   justify: GridJustification
   spacing: GridSpacing
   wrap: GridWrap
@@ -28,6 +26,7 @@ interface Item {
   sm: number
   md: number
   lg: number
+  xl: number
 }
 
 interface Styles {
@@ -65,6 +64,7 @@ export default function ContainItems(props: Partial<Props>) {
             sm={props.sm as GridSize}
             md={props.md as GridSize}
             lg={props.lg as GridSize}
+            xl={props.xl as GridSize}
             zeroMinWidth={props.zeroMinWidth ?? false}
           >
             {item}
