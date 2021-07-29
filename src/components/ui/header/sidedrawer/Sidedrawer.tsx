@@ -10,6 +10,10 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Grid from "@material-ui/core/Grid/Grid";
 import { color } from "@/src/ColorPalette";
+import { shallowEqual, useSelector } from "react-redux";
+import Badge from "@material-ui/core/Badge/Badge";
+import { countTotalItems } from "@/src/utils/Calc";
+import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
 
 interface IProps {
   pageValue: number;
@@ -57,6 +61,16 @@ export default function Sidedrawer(props: IProps) {
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
+  const lineItems = useSelector(
+    (state: any) => state.checkoutReducer.checkout.lineItems,
+    shallowEqual
+  )
+  const CartIcon = (
+    <Badge style={{marginTop: 20}}badgeContent={countTotalItems(lineItems)} color="primary">
+      <ShoppingBasket color="secondary" />
+    </Badge>
+  )
+
 
   return (
     <>
@@ -121,6 +135,7 @@ export default function Sidedrawer(props: IProps) {
           </Grid>
         </List>
       </SwipeableDrawer>
+    {CartIcon}
       <IconButton
         color="secondary"
         className={classes.drawerIconContainer}

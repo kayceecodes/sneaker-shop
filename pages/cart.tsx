@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   itemsListContainer: {
     overflow: 'auto',
-    height: '350px',
+    height: '520px',
     marginTop: '20px',
     marginBottom: '60px',
     paddingRight: '05px',

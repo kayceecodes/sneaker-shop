@@ -185,7 +185,6 @@ export default function Index({ pageAnimations }: Props) {
   ]
   const classes = useStyles()
   const matches = { sm: useMediaQuery(theme.breakpoints.up('sm')) }
-  let src: string = ''
 
   return (
     <PageTransition
