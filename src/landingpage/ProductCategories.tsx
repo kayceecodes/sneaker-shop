@@ -20,6 +20,8 @@ const styles = (theme: Theme) =>
       [theme.breakpoints.up('sm')]: {
         paddingTop: theme.spacing(15),
         paddingBottom: theme.spacing(20),
+        paddingLeft: 60,
+        paddingRight: 60,
       },
     },
     images: {
@@ -140,16 +142,24 @@ function ProductCategories(props: WithStyles<typeof styles>) {
   ]
 
   return (
-    <Container className={classes.root} component="section">
+    // <Container className={classes.root} component="section">
+    <div className={classes.root}>
       <Typography
         style={{
           textAlign: 'center',
-          color: darken(color.offWhite, 0.1),
+          // color: darken(color.offWhite, 0.1),
+          color: '#111',
           fontWeight: 500,
         }}
         variant="h2"
       >
-        Pick Your Terrain
+        <span
+          style={{
+            borderBottom: '4px solid #ccc',
+          }}
+        >
+          Pick Your Terrain
+        </span>
       </Typography>
       <div className={classes.images}>
         {images.map((image) => (
@@ -180,7 +190,7 @@ function ProductCategories(props: WithStyles<typeof styles>) {
           </ButtonBase>
         ))}
       </div>
-    </Container>
+    </div>
   )
 }
 

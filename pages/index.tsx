@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   imgWrapper: {
     textAlign: 'center',
     position: 'relative',
-    maxHeight: '100vh',
+    // maxHeight: '100vh',
     overflow: 'hidden',
   },
   imgHeader: {
@@ -81,16 +81,16 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
     textTransform: 'none',
     color: color.offWhite,
-    border: '9px solid #ffffff3a',
+    border: '1px solid #ffffff5a',
     // backgroundColor: 'rgba(0,0,0, 0.15)',
     padding: '7px 20px',
     zIndex: 1,
-    fontSize: '1.1rem',
+    fontSize: '0.95rem',
     letterSpacing: '0.7px',
-    borderRadius: '3px',
+    borderRadius: '2px',
     transition: 'border 0.3s',
     '&:hover': {
-      border: '9px solid #ffffffbb',
+      border: '1px solid #ffffffbb',
       // border: '1px solid white',
     },
     [theme.breakpoints.up('lg')]: {
@@ -116,16 +116,25 @@ function Item(props: Pick<Props, 'item'>) {
   return (
     <Paper classes={{ root: classes.noShadow }}>
       <div className={classes.imgWrapper}>
-        <img
+        {/* <img
           src={props.item.src}
           style={
             matches.sm
               ? { minHeight: '100vh', minWidth: '100%' }
               : { height: '70vh', minWidth: '100%' }
           }
-        />
-        {/* <Image width="100%" height="100%" src={props.item.src} /> */}
-        <h1 className={classes.imgHeader}>{props.item.header}</h1>
+        /> */}
+        <div
+          // style={
+          //   matches.sm
+          //     ? { minHeight: '100vh', minWidth: '100%' }
+          //     : { height: '70vh', minWidth: '100%' }
+          // }
+          style={{minHeight: matches.sm ? "100vh" : "50vh" }}
+        >
+          <Image layout="fill" objectFit="cover" src={props.item.src} />
+          <h1 className={classes.imgHeader}>{props.item.header}</h1>
+        </div>
       </div>
     </Paper>
   )
@@ -138,10 +147,10 @@ export default function Index({ pageAnimations }: Props) {
       description: '',
       images: {
         desktop: {
-          src: './assets/images/hero/hero-img-pile-of-sneakers-9:6.jpg',
+          src: '/assets/images/hero/hero-img-pile-of-sneakers-9:6.jpg',
         },
         mobile: {
-          src: './assets/images/hero/hero-img-pile-of-sneakers-15:16.jpg',
+          src: '/assets/images/hero/hero-img-pile-of-sneakers-15:16.jpg',
         },
       },
       src: '',
@@ -150,8 +159,8 @@ export default function Index({ pageAnimations }: Props) {
       header: 'Just Skate',
       description: '',
       images: {
-        desktop: { src: './assets/images/hero/hero-img-street-skate-9:6.jpg' },
-        mobile: { src: './assets/images/hero/hero-img-street-skate-15:16.jpg' },
+        desktop: { src: '/assets/images/hero/hero-img-street-skate-9:6.jpg' },
+        mobile: { src: '/assets/images/hero/hero-img-street-skate-15:16.jpg' },
       },
       src: '',
     },
@@ -159,8 +168,8 @@ export default function Index({ pageAnimations }: Props) {
       header: 'Just Run',
       description: '',
       images: {
-        desktop: { src: './assets/images/hero/hero-img-marathon-9:6.jpg' },
-        mobile: { src: './assets/images/hero/hero-img-marathon-15:16.jpg' },
+        desktop: { src: '/assets/images/hero/hero-img-marathon-9:6.jpg' },
+        mobile: { src: '/assets/images/hero/hero-img-marathon-15:16.jpg' },
       },
       src: '',
     },
@@ -168,8 +177,8 @@ export default function Index({ pageAnimations }: Props) {
       header: 'Just Jump',
       description: '',
       images: {
-        desktop: { src: './assets/images/hero/hero-img-shoot-ball-9:6.jpg' },
-        mobile: { src: './assets/images/hero/hero-img-shoot-ball-15:16.jpg' },
+        desktop: { src: '/assets/images/hero/hero-img-shoot-ball-9:6.jpg' },
+        mobile: { src: '/assets/images/hero/hero-img-shoot-ball-15:16.jpg' },
       },
       src: '',
     },
@@ -180,7 +189,7 @@ export default function Index({ pageAnimations }: Props) {
 
   return (
     <PageTransition
-      pageStyle={{ backgroundColor: '#111' }}
+      pageStyle={{ padding: matches.sm ? '0' : '70px 38px 20px' }}
       pageAnimations={pageAnimations}
     >
       <>

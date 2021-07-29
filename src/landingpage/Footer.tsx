@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     letterSpacing: '0.9px',
     fontWeight: 300,
-    fontSize: '1rem',
+    fontSize: '0.8rem',
     margin: '15px 0px',
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.35rem',
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   text: {
     color: fade('#fff', 0.6),
     fontWeight: 300,
-    fontSize: '1rem',
+    fontSize: '0.8rem',
     letterSpacing: '1.2px',
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.35rem',
@@ -47,7 +47,7 @@ export default function Footer() {
   }
   const classes = useStyles()
   return (
-    <Box py={8} style={{ backgroundColor: '#050505' }}>
+    <Box pt={8} pb={4} style={{ backgroundColor: '#050505' }}>
       <GridContainer
         xs={12}
         md={6}
@@ -55,7 +55,7 @@ export default function Footer() {
         justify="center"
         direction={matches.sm ? 'row' : 'column'}
       >
-        <Box pb={3} mb={3} mx={8} className={classes.section}>
+        <Box pb={3} mb={3} mx={matches.sm ? 8 : 5} className={classes.section}>
           <Typography
             variant="h2"
             style={{ fontSize: '2rem' }}
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
           <strong className={classes.boldText}>Shop Here</strong>
         </Box>
-        <Box pb={8} mb={3} mx={8} className={classes.section}>
+        <Box pb={8} mb={3} mx={matches.sm ? 8 : 5} className={classes.section}>
           <GridContainer xs={6} spacing={4}>
             <div>
               <Typography variant="h5" className={classes.boldText}>
