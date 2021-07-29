@@ -189,7 +189,7 @@ export default function Index({ pageAnimations }: Props) {
 
   return (
     <PageTransition
-      pageStyle={{ padding: matches.sm ? '0' : '70px 38px 20px' }}
+      pageStyle={{ padding: matches.sm ? '0' : '70px 38px 30px' }}
       pageAnimations={pageAnimations}
     >
       <>
