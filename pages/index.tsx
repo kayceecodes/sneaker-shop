@@ -124,7 +124,7 @@ function Item(props: Pick<Props, 'item'>) {
               : { height: '70vh', minWidth: '100%' }
           }
         />
-
+        {/* <Image width="100%" height="100%" src={props.item.src} /> */}
         <h1 className={classes.imgHeader}>{props.item.header}</h1>
       </div>
     </Paper>
