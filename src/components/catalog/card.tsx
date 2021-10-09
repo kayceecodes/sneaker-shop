@@ -16,6 +16,7 @@ const useStyles = makeStyles(() => ({
   captionText: {
     // textAlign: 'left',
     color: '#111',
+    fontFamily: 'Montserrat',
   }
 }))
 

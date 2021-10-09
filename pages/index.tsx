@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: '10%',
     left: '15%',
-    font: '1.5rem Inter',
+    font: '1.5rem "Stardos Stencil"',
     color: color.offWhite,
     zIndex: 1,
     [theme.breakpoints.up('sm')]: {
@@ -73,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
   relativeContainer: {
     position: 'relative',
+    borderBottom: '2px solid #444',
   },
   shopNowBtn: {
     position: 'absolute',
@@ -81,16 +82,17 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
     textTransform: 'none',
     color: color.offWhite,
-    border: '1px solid #ffffff5a',
+    border: '5.5px solid #ffffff5a',
     // backgroundColor: 'rgba(0,0,0, 0.15)',
     padding: '7px 20px',
     zIndex: 1,
-    fontSize: '0.95rem',
+    font: '0.95rem "Stardos Stencil"',
     letterSpacing: '0.7px',
-    borderRadius: '2px',
+    borderRadius: '3px',
     transition: 'border 0.3s',
     '&:hover': {
-      border: '1px solid #ffffffbb',
+      backgroundColor: '#1a1a1aac',
+      border: '5.5px solid #ffffff5a',
       // border: '1px solid white',
     },
     [theme.breakpoints.up('lg')]: {
@@ -116,20 +118,7 @@ function Item(props: Pick<Props, 'item'>) {
   return (
     <Paper classes={{ root: classes.noShadow }}>
       <div className={classes.imgWrapper}>
-        {/* <img
-          src={props.item.src}
-          style={
-            matches.sm
-              ? { minHeight: '100vh', minWidth: '100%' }
-              : { height: '70vh', minWidth: '100%' }
-          }
-        /> */}
         <div
-          // style={
-          //   matches.sm
-          //     ? { minHeight: '100vh', minWidth: '100%' }
-          //     : { height: '70vh', minWidth: '100%' }
-          // }
           style={{minHeight: matches.sm ? "100vh" : "50vh" }}
         >
           <Image layout="fill" objectFit="cover" src={props.item.src} />
@@ -143,7 +132,7 @@ function Item(props: Pick<Props, 'item'>) {
 export default function Index({ pageAnimations }: Props) {
   var items = [
     {
-      header: '',
+      header: 'Sneaker Shop',
       description: '',
       images: {
         desktop: {

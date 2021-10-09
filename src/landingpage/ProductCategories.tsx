@@ -15,6 +15,7 @@ import { color } from '../ColorPalette'
 const styles = (theme: Theme) =>
   createStyles({
     root: {
+      backgroundColor: theme.palette.common.offWhite,
       paddingTop: theme.spacing(8),
       paddingBottom: theme.spacing(12),
       [theme.breakpoints.up('sm')]: {
@@ -24,10 +25,11 @@ const styles = (theme: Theme) =>
         paddingRight: 60,
       },
     },
-    images: {
+    imagesContainer: {
       marginTop: theme.spacing(8),
       display: 'flex',
       flexWrap: 'wrap',
+      border: '5px solid #444',
     },
     imageWrapper: {
       position: 'relative',
@@ -148,7 +150,7 @@ function ProductCategories(props: WithStyles<typeof styles>) {
         style={{
           textAlign: 'center',
           // color: darken(color.offWhite, 0.1),
-          color: '#111',
+          color: '#333',
           fontWeight: 500,
         }}
         variant="h2"
@@ -161,7 +163,7 @@ function ProductCategories(props: WithStyles<typeof styles>) {
           Pick Your Terrain
         </span>
       </Typography>
-      <div className={classes.images}>
+      <div className={classes.imagesContainer}>
         {images.map((image) => (
           <ButtonBase
             key={image.title}

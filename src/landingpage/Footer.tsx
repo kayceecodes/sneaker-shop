@@ -23,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: `1px solid transparent`,
     },
   },
+  footerContainer: {
+   backgroundColor: '#0f0f0f'
+  },
+  lowerContainer: {
+    backgroundColor: '#141414',
+    padding: '15px 0',
+    borderTop: '0.7px solid #ffffff30',
+  },
   section: {
     borderBottom: `1px solid ${fade('#fff', 0.25)}`,
     [theme.breakpoints.up('sm')]: {
@@ -47,7 +55,7 @@ export default function Footer() {
   }
   const classes = useStyles()
   return (
-    <Box pt={8} pb={4} style={{ backgroundColor: '#050505' }}>
+    <Box pt={8} className={classes.footerContainer}>
       <GridContainer
         xs={12}
         md={6}
@@ -58,7 +66,7 @@ export default function Footer() {
         <Box pb={3} mb={3} mx={matches.sm ? 8 : 5} className={classes.section}>
           <Typography
             variant="h2"
-            style={{ fontSize: '2rem' }}
+            style={{ fontSize: '2rem', fontFamily: 'Stardos Stencil' }}
             className={classes.boldText}
           >
             Sneaker Shop
@@ -93,9 +101,11 @@ export default function Footer() {
           </GridContainer>
         </Box>
       </GridContainer>
+      <div className={classes.lowerContainer}>
       <Typography variant="caption" className={classes.text}>
         <small style={{marginLeft: '60px'}}>@Copywright 2021</small>
       </Typography>
+      </div>
     </Box>
   )
 }

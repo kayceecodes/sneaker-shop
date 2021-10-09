@@ -9,7 +9,12 @@ import ProductType from './checkbox/ProductType'
 import Box from '@material-ui/core/Box/Box'
 
 const useStyles = makeStyles((theme: Theme) => ({
-  
+boxContainer: {
+    // boxShadow: '0 0 5px rgba(0,0,0,0.2)',
+    border: '1.2px solid rgba(0,0,0,0.2)',
+    borderRadius: '5px',
+    backgroundColor: '#f5f5f5'
+  }
 }))
 
 interface Props {
@@ -24,7 +29,7 @@ export default function FilterSideBar(props: Props) {
   
   return (
     <>     
-        <Box py={2} px={3}>
+        <Box py={4} pl={6} className={classes.boxContainer}>
           <FormControl>
             <PriceRange
               priceRangeState={props.priceRangeState}

@@ -198,7 +198,7 @@ export default function ProductPage({ product, setPageValue }: Props) {
           alignItems="center"
           direction="column"
         >
-          <Typography variant="body1" component="div">
+          <Typography variant="body1" component="div" style={{fontFamily: 'Montserrat', color: '#444'}}>
             <h2>{extractTitle(product.title)}</h2>${product.variants[0].price}
             <br />
             {product.productType}

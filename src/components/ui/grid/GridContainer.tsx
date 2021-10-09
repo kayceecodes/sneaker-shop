@@ -34,6 +34,7 @@ interface Styles {
   height: string | number
   margin: string | number
   padding: string | number
+  backgroundColor: string
 }
 
 type Props = Item & Container & HtmlHTMLAttributes<any> & Styles
@@ -53,6 +54,7 @@ export default function ContainItems(props: Partial<Props>) {
         height: props.height,
         margin: props.margin,
         padding: props.padding,
+        backgroundColor: props.backgroundColor,
       }}
     >
       {Array.isArray(props.children) ? (

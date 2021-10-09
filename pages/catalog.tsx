@@ -102,6 +102,7 @@ export default function Catalog(props: Props) {
   // console.log('product.prices in catalog: ', products[0])
   return (
     <PageTransition pageAnimations={props.pageAnimations}>
+        <div style={{marginTop: 120}} />
         <Container maxWidth="xl">
           <Box pr={3} mt={10} pl={matches.mdUp ? 10 : 3}>
           <GridContainer justify="flex-start" width="100%">
@@ -144,6 +145,7 @@ export default function Catalog(props: Props) {
                           props.setPageValue(1)
                         }}
                         data-testid="catalog-card"
+                        style={{border: '0.7px solid #4d4d4d50'}}
                       >
                         <Card
                           title={product.title}

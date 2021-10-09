@@ -20,6 +20,7 @@ import { MouseEvent } from '../../../types/aliases' // TYPE - Events
 import { color } from '@/src/ColorPalette'
 import { SectionMargin } from '../Section'
 import Box from '@material-ui/core/Box/Box'
+import { ClassNameMap } from '@material-ui/core/styles/withStyles'
 // import { Product } from 'shopify-buy'
 
 interface Props {
@@ -40,6 +41,8 @@ export interface Route {
   ariaOwns?: string
   ariaHasPopup?: string
   mouseOver?: any
+  tabStyle: "tab" | "tabs" | "tabHome" | "tabCart" | "indicator"
+
 }
 
 export interface MenuOption {
@@ -93,14 +96,15 @@ export default function Header(props: Props) {
   const handleClose = () => setOpenMenu(false)
 
   const routes: Route[] = [
-    { name: 'Home', link: '/', activeIndex: 0 },
+    { name: 'Home', link: '/', activeIndex: 0, tabStyle: 'tabHome' },
     {
       name: 'Sneakers',
       link: '/catalog',
       activeIndex: 1,
+      tabStyle: 'tabs',
     },
     // { name: 'Contact Us', link: '/contact-us', activeIndex: 2 },
-    { name: 'Cart', link: '/cart', activeIndex: 2 },
+    { name: 'Cart', link: '/cart', activeIndex: 2, tabStyle: 'tabCart' },
   ]
 
   useEffect(() => {
