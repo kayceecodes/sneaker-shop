@@ -67,7 +67,7 @@ export default function Sidedrawer(props: IProps) {
   )
   const CartIcon = (
     <Badge style={{marginTop: 20}}badgeContent={countTotalItems(lineItems)} color="primary">
-      <ShoppingBasket color="secondary" />
+      <ShoppingBasket color="primary" />
     </Badge>
   )
 

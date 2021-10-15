@@ -4,6 +4,7 @@ import Product, { ProductVariant } from 'shopify-buy'
 /*Product custom built typeto display what's need from shopify*/
 export interface Product {
   id?: number
+  index: number
   title: string
   variants: {id: string, price: string, title: string}[]
   // variants: {price: string}[]

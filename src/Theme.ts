@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import { color } from './ColorPalette'
 import red from '@material-ui/core/colors/red';
@@ -48,21 +48,23 @@ declare module "@material-ui/core/styles/createPalette" {
     offWhite: string
     frostBlue: string
     cadetBlue: string
+    candyAppleRed: string
   }
 }
 
-export default createMuiTheme({
+export default createTheme({
   palette: {
     common: {    
       dimGray: `${color.dimGray}`,
       offWhite: `${color.offWhite}`,
     },
     primary: {
-      main: `${color.dimGray}`,
+      // main: `${color.dimGray}`,
+      main: `${color.darkCharcoal}`,
       // main: white,
     },
     secondary: {
-      main: `${color.caribbeanBlue}`,
+      main: `${color.candyAppleRed}`,
     },
     error: {
       main: red.A400,

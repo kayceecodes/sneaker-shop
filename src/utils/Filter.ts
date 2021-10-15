@@ -143,7 +143,10 @@ export function filterItems(
   priceRangeState: PriceRangeState & { [char: string]: boolean },
   productTypeState: ProductTypeState & { [char: string]: boolean }
 ) {
-  let temp = items
+  let temp = items.map((val, index) => {
+    val.index = index
+    return val
+  })
 
   temp = [...filterByPriceRange(temp, priceRangeState)]
   temp = [...filterByProductType(temp, productTypeState)]

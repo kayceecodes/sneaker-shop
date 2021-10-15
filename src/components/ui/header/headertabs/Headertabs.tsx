@@ -25,22 +25,30 @@ interface IProps {
 }
 
 const useStyles = makeStyles((theme) => ({
-  // tabContainer: {
-  //   marginLeft: "auto", //pushes the tab container to the right as much as possible
-  // },
-  tab: {
-    backgroundColor: "rgba(0,0,0,0.65)",
-    // borderBottom: '1px solid #ddd',
-    // minWidth: 10,
+  homePageTab: {
+    color: "rgba(250,250,250,1)", 
+    backgroundColor: "#1a1a1aba",
     fontWeight: 400,
     fontSize: "1.3rem",
-    // fontWeight: 500,
     transition: "color 0.3s",
     textTransform: "none", // Remove the button transformation styles
     paddingLeft: "50px",
     paddingRight: "50px",
     borderBottom: "2px solid rgba(0,0,0,0.0)",
-    // padding: '0 1.4%',
+    "&:hover": {
+      textDecoration: "none !important",
+    },
+  },
+  
+  tab: {
+    color: '#333',
+    fontWeight: 400,
+    fontSize: "1.3rem",
+    transition: "color 0.3s",
+    textTransform: "none", // Remove the button transformation styles
+    paddingLeft: "50px",
+    paddingRight: "50px",
+    borderBottom: "2px solid rgba(0,0,0,0.0)",
     "&:hover": {
       textDecoration: "none !important",
     },
@@ -49,22 +57,23 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   tabHome: {
-    borderTopLeftRadius: "5px",
-    borderBottomLeftRadius: "5px",
+    borderTopLeftRadius: "1px",
+    borderBottomLeftRadius: "1px",
   },
   tabCart: {
-    borderTopRightRadius: "5px",
-    borderBottomRightRadius: "5px",
+    borderTopRightRadius: "1px",
+    borderBottomRightRadius: "1px",
   },
   tabWrapper: {
     width: "300px",
   },
   indicator: {
-    height: "2px",
+    height: "1.5px",
+    width: "15px",
   },
   wrapped: {
     width: 100,
-  }
+  },
 }));
 
 function Headertabs(props: IProps) {
@@ -83,7 +92,7 @@ function Headertabs(props: IProps) {
 
   const cartIcon = (
     <Badge badgeContent={countTotalItems(lineItems)} color="primary">
-      <ShoppingBasket color="secondary" />
+      <ShoppingBasket />
     </Badge>
   );
 
@@ -98,12 +107,11 @@ function Headertabs(props: IProps) {
         }}
       >
         {props.routes.map((route: Route) => (
-          <Tab
-            style={{ color: "#fff" }}
+          <Tab            
             key={`${route.link} ${classes.tab}`}
             aria-owns={route.ariaOwns}
             aria-haspopup={props.anchorEl ? "true" : undefined}
-            className={classes.tab + " " + classes[route.tabStyle]}
+            className={( router.asPath === '/' ? classes.homePageTab : classes.tab) + " " + classes[route.tabStyle]}
             component={Link}
             wrapped={true}
             classes={{wrapped: classes.wrapped}}
@@ -116,8 +124,6 @@ function Headertabs(props: IProps) {
     </>
   );
 }
-const mapStateToProps = (state: any) => ({
-  // cartItems: state.cart.cartItems,
-});
 
-export default connect(mapStateToProps)(Headertabs);
+
+export default Headertabs;

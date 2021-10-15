@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     color: color.charcoal
   },
   cartDetailsBox: {
-    borderBottom: `2px solid ${color.caribbeanBlue}`,
+    borderBottom: `2px solid ${color.candyAppleRed}`,
     padding: '20px 70px 30px',
   },
   checkoutBtn: {
@@ -122,7 +122,7 @@ export default function CartPage(props: Props) {
       <Box mt={matches.sm ? 25 : 10}>
         <Grid
           direction="column"
-          justify="space-around"
+          justifyContent="space-around"
           alignItems="center"
           xs={12}
         >

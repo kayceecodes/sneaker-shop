@@ -21,12 +21,16 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
     width: 85,
+    textAlign: 'center',
     [theme.breakpoints.up('sm')]: {
       width: 100,
     },
   },
   outlined: {
-    color: theme.palette.common.dimGray,
+    width: '180px',
+    height: '35px',
+    borderRadius: "0px",
+    color: '#444',
   },
 }))
 

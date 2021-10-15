@@ -67,7 +67,7 @@ export default function FilterPopover(props: Props) {
   } /* xs: 0, sm: 600 md: 960, lg:1280px, xl1920px */
 
   return (
-    <div style={{ visibility: `${matches.mdUp ? 'hidden' : 'visible'}` }}>
+    <div style={{ display: `${matches.mdUp ? 'none' : 'block'}` }}>
       <Button
         aria-describedby={id}
         variant="outlined"

@@ -14,7 +14,7 @@ interface Container {
   alignContent: GridContentAlignment
   alignItems: GridItemsAlignment
   direction: GridDirection
-  justify: GridJustification
+  justifyContent: GridJustification
   spacing: GridSpacing
   wrap: GridWrap
   zeroMinWidth: boolean
@@ -46,7 +46,7 @@ export default function ContainItems(props: Partial<Props>) {
       alignContent={props.alignContent as GridContentAlignment}
       alignItems={props.alignItems as GridItemsAlignment}
       direction={props.direction as GridDirection}
-      justify={props.justify as GridJustification}
+      justifyContent={props.justifyContent as GridJustification}
       spacing={props.spacing as GridSpacing}
       wrap={props.wrap as GridWrap}
       style={{

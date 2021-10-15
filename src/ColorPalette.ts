@@ -1,7 +1,9 @@
 export const color = 
 {
   charcoal: '#444',
+  darkCharcoal: '#3a3a3a',
   frostWhite: "#f3f8f9",
+  candyAppleRed: '#FF0800',
   dimGray: "rgba(74, 88, 100, 1)",
   darkSlateGray: "#252525",
   offWhite: "#f5f4f4",
