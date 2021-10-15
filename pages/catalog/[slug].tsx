@@ -197,7 +197,7 @@ export default function ProductPage({ product, setPageValue }: Props) {
           src={product.images[0].src}
         />
         <GridContainer
-          justify="space-between"
+          justifyContent="space-between"
           alignItems="center"
           direction="column"
           padding="0 15px"
