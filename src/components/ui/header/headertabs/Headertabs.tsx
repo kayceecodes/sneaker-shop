@@ -14,6 +14,7 @@ import Badge from "@material-ui/core/Badge/Badge";
 import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
 import { CheckoutState } from "@/src/store/actions/actionCreators/checkout";
 import { countTotalItems } from "@/src/utils/Calc";
+import { ShoppingCart } from "@material-ui/icons";
 
 interface IProps {
   pageValue: number;
@@ -68,8 +69,7 @@ const useStyles = makeStyles((theme) => ({
     width: "300px",
   },
   indicator: {
-    height: "1.5px",
-    width: "15px",
+    height: "2.5px",
   },
   wrapped: {
     width: 100,
@@ -92,7 +92,8 @@ function Headertabs(props: IProps) {
 
   const cartIcon = (
     <Badge badgeContent={countTotalItems(lineItems)} color="primary">
-      <ShoppingBasket />
+      {/* <ShoppingBasket /> */}
+      <ShoppingCart />
     </Badge>
   );
 

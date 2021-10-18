@@ -23,6 +23,7 @@ import CircularProgress from "@material-ui/core/CircularProgress/CircularProgres
 import makeStyles from "@material-ui/styles/makeStyles/makeStyles";
 import { pageNum } from "@/src/utils/Calc";
 import { PaginationItem } from "@material-ui/lab";
+import Footer from "@/src/landingpage/Footer";
 
 export async function getStaticProps() {
   let products = await Client.buildClient({
@@ -149,7 +150,7 @@ export default function Catalog(props: Props) {
    */
   const paginatedProducts = filteredProducts.filter(
     (val) =>
-      (val.index as number) > paginationValue * (pageNumber - 1) &&
+      (val.index as number) >= paginationValue * (pageNumber - 1) &&
       (val.index as number) < paginationValue * pageNumber
   );
   const theme = useTheme();
@@ -163,8 +164,8 @@ export default function Catalog(props: Props) {
   return (
     <PageTransition pageAnimations={props.pageAnimations}>
       <div style={{ marginTop: 120 }} />
+        <Box pr={3} mt={10} mb={15} pl={matches.mdUp ? 10 : 3}>
       <Container maxWidth="xl">
-        <Box pr={3} mt={10} pl={matches.mdUp ? 10 : 3}>
           <SectionBreak mt={5} />
           <PaginationButtons
             array={arrayOfPageNum}
@@ -185,7 +186,7 @@ export default function Catalog(props: Props) {
           <SectionBreak mt={matches.smDown ? 5 : 0} />
           <Grid container justify="space-between" wrap="wrap">
             {matches.mdUp && (
-              <Grid item xs={3}>
+              <Grid item xs={3} style={{border: '1px solid #4d4d4d50', borderRadius: '4px', boxShadow: '0 0 4px hsl(0, 2%, 82%'}}>
                 <FilterSideBar
                   handlePriceRangeChange={handlePriceRangeChange}
                   priceRangeState={priceRangeState}
@@ -209,7 +210,7 @@ export default function Catalog(props: Props) {
                     />
                   ) : (
                     paginatedProducts?.map((product: Product) => (
-                      <Grid key={product.title} container justify="center">
+                      <Grid key={product.index} container justify="center">
                         <Button
                           component={Link}
                           as={`/catalog/${product.handle}`}
@@ -234,8 +235,9 @@ export default function Catalog(props: Props) {
               </div>
             </Grid>
           </Grid>
-        </Box>
       </Container>
+        </Box>
+      <Footer />
     </PageTransition>
   );
 }

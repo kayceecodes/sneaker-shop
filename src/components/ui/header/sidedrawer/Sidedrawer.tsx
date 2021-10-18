@@ -13,7 +13,8 @@ import { color } from "@/src/ColorPalette";
 import { shallowEqual, useSelector } from "react-redux";
 import Badge from "@material-ui/core/Badge/Badge";
 import { countTotalItems } from "@/src/utils/Calc";
-import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
+import { ShoppingCart } from "@material-ui/icons";
+// import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
 
 interface IProps {
   pageValue: number;
@@ -66,8 +67,9 @@ export default function Sidedrawer(props: IProps) {
     shallowEqual
   )
   const CartIcon = (
-    <Badge style={{marginTop: 20}}badgeContent={countTotalItems(lineItems)} color="primary">
-      <ShoppingBasket color="primary" />
+    <Badge style={{marginTop: 20, color: "red"}}badgeContent={countTotalItems(lineItems)}>
+      {/* <ShoppingBasket color="primary" /> */}
+      <ShoppingCart color="primary" />
     </Badge>
   )
 
