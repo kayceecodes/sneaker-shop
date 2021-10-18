@@ -89,7 +89,7 @@ export default function ItemCard(props: CartItem) {
           variant="caption"
           component="div"
         >
-          <GridContainer alignItems="center" justify="space-around">
+          <GridContainer alignItems="center" justifyContent="space-around">
             <Image
               className={classes.imgWrapper}
               width={matches.sm ? 90 : 55}

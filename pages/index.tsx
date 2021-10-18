@@ -170,7 +170,7 @@ const InnerAbstractBorders = () => {
 export default function Index({ pageAnimations }: Props) {
   var items = [
     {
-      header: "Sneaker Shop",
+      header: "The Gear Shop",
       description: "",
       images: {
         desktop: {

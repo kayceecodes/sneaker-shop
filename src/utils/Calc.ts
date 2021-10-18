@@ -33,7 +33,6 @@ export const calcTotalCost = (lineItems: any) => {
   return cartTotal.toFixed(2)
 }
 
-
 // export const calcTotalCost = (lineItems: Item[]) => {
 //   let cartTotal = 0
 

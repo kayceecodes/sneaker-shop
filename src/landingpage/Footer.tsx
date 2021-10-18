@@ -5,7 +5,7 @@ import theme from '@/src/Theme'
 import Typography from '@material-ui/core/Typography/Typography'
 import { color } from '../ColorPalette'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import { fade } from '@material-ui/core/styles/colorManipulator'
+import { alpha } from '@material-ui/core/styles/colorManipulator'
 import Box from '@material-ui/core/Box/Box'
 import styled from '@material-ui/core/styles/styled'
 import Icon from '@material-ui/core/Icon/Icon'
@@ -32,13 +32,13 @@ const useStyles = makeStyles((theme) => ({
     borderTop: '0.7px solid #ffffff30',
   },
   section: {
-    borderBottom: `1px solid ${fade('#fff', 0.25)}`,
+    borderBottom: `1px solid ${alpha('#fff', 0.25)}`,
     [theme.breakpoints.up('sm')]: {
       borderBottom: `1px solid transparent`,
     },
   },
   text: {
-    color: fade('#fff', 0.6),
+    color: alpha('#fff', 0.6),
     fontWeight: 300,
     fontSize: '0.8rem',
     letterSpacing: '1.2px',
@@ -60,7 +60,7 @@ export default function Footer() {
         xs={12}
         md={6}
         xl={4}
-        justify="center"
+        justifyContent="center"
         direction={matches.sm ? 'row' : 'column'}
       >
         <Box pb={3} mb={3} mx={matches.sm ? 8 : 5} className={classes.section}>
@@ -69,7 +69,7 @@ export default function Footer() {
             style={{ fontSize: '2rem', fontFamily: 'Stardos Stencil' }}
             className={classes.boldText}
           >
-            Sneaker Shop
+            The Gear Shop
           </Typography>
           <div className={classes.text}>
             <span>The place to get your gear</span>

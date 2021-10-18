@@ -30,7 +30,7 @@ export default function FilterSideBar(props: Props) {
   return (
     <>     
         <Box py={4} pl={6} className={classes.boxContainer} maxWidth="282px">
-          <FormControl>
+          <FormControl style={{color: '#2d2d2d'}}>
             <PriceRange
               priceRangeState={props.priceRangeState}
               handlePriceRangeChange={props.handlePriceRangeChange}

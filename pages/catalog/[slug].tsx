@@ -20,6 +20,7 @@ import { extractTitle } from "@/src/utils/Parse";
 import { useDispatch } from "react-redux";
 import { addToCheckout } from "@/src/store/actions/actionCreators/checkout";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import Footer from "@/src/landingpage/Footer";
 
 interface Props {
   product: Product;
@@ -234,6 +235,8 @@ export default function ProductPage({ product, setPageValue }: Props) {
           </Typography>
         </GridContainer>
       </GridContainer>
+      <SectionBreak mt={20} />
+      <Footer />
     </Box>
   );
 }

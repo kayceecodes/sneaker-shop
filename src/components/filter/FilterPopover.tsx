@@ -105,7 +105,7 @@ export default function FilterPopover(props: Props) {
               productTypeState={props.productTypeState}
             />
             <br />
-            <Grid container justify="flex-end">
+            <Grid container justifyContent="flex-end">
               <Button
                 onClick={() => handleClose()}
                 variant="outlined"

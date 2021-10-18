@@ -33,7 +33,6 @@ export default function PriceRange(props: Props) {
       <FormGroup>
         <Typography variant="body1">
           <FormControlLabel
-            style={{ fontFamily: 'Roboto' }}
             control={
               <Checkbox
                 checked={priceRangeState['$0 - $60']}

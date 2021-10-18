@@ -104,11 +104,13 @@ const Stats = (props: any) => {
 
   return (
     <div className={classes.cartDetailsBox}>
-      <span className={classes.boldText}>{"Cart Total: "}</span>{" "}
-      {"$" + calcTotalCost(props.lineItems)}
+      <h3 className={classes.boldText}>
+        {"Cart Total: "}
+        {"$" + calcTotalCost(props.lineItems)}      
       <br />
-      <span className={classes.boldText}>{"Total Items in Cart: "}</span>
-      {countTotalItems(props.lineItems)}
+        {"Total Items in Cart: "}
+        {countTotalItems(props.lineItems)}
+      </h3>
     </div>
   );
 };
@@ -126,7 +128,7 @@ export default function CartPage(props: Props) {
       pageStyle={props.pageStyle}
       pageAnimations={props.pageAnimations}
     >
-      <Box mt={matches.sm ? 25 : 10} mb={10}>
+      <Box mt={matches.sm ? 17 : 10} mb={10}>
         <Grid
           direction="column"
           justifyContent="space-around"

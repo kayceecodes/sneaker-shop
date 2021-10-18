@@ -109,7 +109,7 @@ export default function Sidedrawer(props: IProps) {
             container
             className={classes.svgGridContainer}
             direction="column"
-            justify="space-around"
+            justifyContent="space-around"
 
           >
             <Grid

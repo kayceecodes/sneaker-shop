@@ -29,10 +29,13 @@ interface Props {
 const useStyles = makeStyles(() => ({
   btn: {
     textTransform: 'none',
-    color: color.dimGray,
-    border: `1px solid ${color.dimGray}`,
+    color: color.offWhite,
+    backgroundColor: '#333',
     boxShadow: '0 0 3px rgba(0,0,0,0.2)',
-    padding: '8px 20px',
+    borderRadius: '0px',
+    padding: '6px 30px',
+    fontWeight: 400,
+    fontFamily: 'Montserrat',
     '&:hover': {
       textDecoration: 'none',
     },
@@ -42,7 +45,10 @@ const useStyles = makeStyles(() => ({
   },
   boldText: {
     color: '#444',
-    // fontFamily: ''
+    fontFamily: 'Montserrat',
+  },
+  header: {
+    fontSize: '1.5rem !important',
   },
   modal: {
     display: 'flex',
@@ -51,7 +57,6 @@ const useStyles = makeStyles(() => ({
   },
   summaryContainer: {
     boxShadow: '0 0 20px rgba(0,0,0, 0.35)',
-    color: color.dimGray,
   },
 }))
 
@@ -123,12 +128,12 @@ export default function CartSummary(props: Props) {
       aria-describedby="alert-dialog-slide-description"
     >
       <DialogTitle id="alert-dialog-slide-title">
-        <div className={classes.boldText} style={{ fontSize: '2rem' }}>{'Just Added'}</div>
+        <div className={classes.boldText + ' ' + classes.header} style={{ fontSize: '2rem' }}>{'Just Added'}</div>
       </DialogTitle>
       <Typography variant="body1" component="div">
         <GridContainer
-          padding="35px 10px 5px"
-          justify="space-around"
+          padding="5px 10px 5px"
+          justifyContent="space-around"
           wrap="wrap"
           width={matches.sm ? '550px' : 'auto'}
         >
@@ -153,7 +158,7 @@ export default function CartSummary(props: Props) {
         </GridContainer>
         <div style={{ width: '100%' }}>
           <GridContainer
-            justify="space-around"
+            justifyContent="space-around"
             alignItems="center"
             margin="30px 0px 20px"
           >

@@ -98,7 +98,7 @@ export default function Header(props: Props) {
   const routes: Route[] = [
     { name: 'Home', link: '/', activeIndex: 0, tabStyle: 'tabHome' },
     {
-      name: 'Sneakers',
+      name: 'Shoes',
       link: '/catalog',
       activeIndex: 1,
       tabStyle: 'tabs',
@@ -147,7 +147,7 @@ export default function Header(props: Props) {
         classes={{ root: classes.colors + ' ' + classes.container }}
       >
         <Toolbar>
-          <Grid container justify="space-around" alignItems="center">
+          <Grid container justifyContent="space-around" alignItems="center">
             <Grid item xs={12}>
               <Typography variant="body2" component="div">
                 <Grid container>{matches ? sidedrawer : tabs}</Grid>

@@ -144,7 +144,7 @@ export default function CartPage(props: IProps) {
     >
       <GridContainer
         direction={matches.xl ? "row" : "column"}
-        justify="center"
+        justifyContent="center"
         alignItems="center"
         margin="160px auto 0"
         xs={matches.xl ? 6 : 12}
@@ -168,4 +168,4 @@ export default function CartPage(props: IProps) {
     </PageTransition>
   )
 } -->
-# sneaker-shop
+# Gear Shop

@@ -64,6 +64,10 @@ const useStyles = makeStyles(() => ({
       boxShadow: "0 0 8px rgba(0,0,0,0.17)",
     },
   },
+  pageButton: {
+    border: "0.01px solid rgba(0,0,0,0.2",
+    boxShadow: "0px 0px 5px rgba(0,0,0,0.2)",
+  },
   progress: {
     position: "absolute",
     top: "40%",
@@ -73,30 +77,50 @@ const useStyles = makeStyles(() => ({
 
 interface PaginationProps {
   array: number[];
+  numOfItems: number;
+  paginateValue: number;
   pageNumber: number;
   setPageNumber: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const PaginationButtons = ({
   array,
+  numOfItems,
+  paginateValue,
   pageNumber,
   setPageNumber,
-}: PaginationProps) => (
-  <GridContainer xs={2} sm={1} justifyContent="center">
-    {array.map((val: number) => (
-      <Button
-        key={val + 1}
-        onClick={() => setPageNumber(val + 1)}
+}: PaginationProps) => {
+  const theme = useTheme();
+  const matches = { sm: useMediaQuery(theme.breakpoints.up("sm")) };
+  return (
+    <Box>
+      <GridContainer xs={4} sm={1} justifyContent="center">
+        {array.map((val: number) => (
+          <Button
+            key={val + 1}
+            onClick={() => setPageNumber(val + 1)}
+            style={{
+              textDecoration: val + 1 === pageNumber ? "underline" : "none",
+              fontFamily: "Montserrat",
+            }}
+          >
+            {val + 1}
+          </Button>
+        ))}
+      </GridContainer>
+      <SectionBreak mt={3} />
+      <div
         style={{
-          textDecoration: val + 1 === pageNumber ? "underline" : "none",
-          fontFamily: "Montserrat",
+          position: "absolute",
+          right: "10%",
+          top: matches.sm ? "0.45%" : "3.05%",
         }}
       >
-        {val + 1}
-      </Button>
-    ))}
-  </GridContainer>
-);
+        {paginateValue + " of " + numOfItems + "  items"}
+      </div>
+    </Box>
+  );
+};
 
 export default function Catalog(props: Props) {
   const classes = useStyles();
@@ -141,17 +165,17 @@ export default function Catalog(props: Props) {
     priceRangeState,
     productTypeState
   );
-  const [paginationValue, setPaginationValue] = useState<number>(10);
+  const [paginateValue, setPaginateValue] = useState<number>(10);
   const [pageNumber, setPageNumber] = useState<number>(1);
-  const arrayOfPageNum = pageNum(filteredProducts, paginationValue);
+  const arrayOfPageNum = pageNum(filteredProducts, paginateValue);
   /**
-   * paginationValue * pageNumber gives you indexs that you want to limit up to.
+   * paginateValue * pageNumber gives you indexs that you want to limit up to.
    * if index of product is more than (i > pV*(pN-1) && i < pV*pN)
    */
   const paginatedProducts = filteredProducts.filter(
     (val) =>
-      (val.index as number) >= paginationValue * (pageNumber - 1) &&
-      (val.index as number) < paginationValue * pageNumber
+      (val.index as number) >= paginateValue * (pageNumber - 1) &&
+      (val.index as number) < paginateValue * pageNumber
   );
   const theme = useTheme();
   const [loading, setLoading] = useState<boolean>(false);
@@ -163,12 +187,14 @@ export default function Catalog(props: Props) {
   // console.log('product.prices in catalog: ', products[0])
   return (
     <PageTransition pageAnimations={props.pageAnimations}>
-      <div style={{ marginTop: 120 }} />
-        <Box pr={3} mt={10} mb={15} pl={matches.mdUp ? 10 : 3}>
-      <Container maxWidth="xl">
-          <SectionBreak mt={5} />
+      {/* <div style={{ marginTop: 120 }} /> */}
+      <Box pr={3} mt={matches.mdUp ? 20 : 14} mb={15} pl={matches.mdUp ? 10 : 3}>
+        <Container maxWidth="xl">
+          {/* <SectionBreak mt={18} /> */}
           <PaginationButtons
             array={arrayOfPageNum}
+            numOfItems={filteredProducts.length}
+            paginateValue={paginateValue}
             setPageNumber={setPageNumber}
             pageNumber={pageNumber}
           />
@@ -184,9 +210,17 @@ export default function Catalog(props: Props) {
             }
           </GridContainer>
           <SectionBreak mt={matches.smDown ? 5 : 0} />
-          <Grid container justify="space-between" wrap="wrap">
+          <Grid container justifyContent="space-between" wrap="wrap">
             {matches.mdUp && (
-              <Grid item xs={3} style={{border: '1px solid #4d4d4d50', borderRadius: '4px', boxShadow: '0 0 4px hsl(0, 2%, 82%'}}>
+              <Grid
+                item
+                xs={3}
+                style={{
+                  border: "1px solid #4d4d4d50",
+                  borderRadius: "4px",
+                  boxShadow: "0 0 4px hsl(0, 2%, 82%",
+                }}
+              >
                 <FilterSideBar
                   handlePriceRangeChange={handlePriceRangeChange}
                   priceRangeState={priceRangeState}
@@ -210,7 +244,7 @@ export default function Catalog(props: Props) {
                     />
                   ) : (
                     paginatedProducts?.map((product: Product) => (
-                      <Grid key={product.index} container justify="center">
+                      <Grid key={product.index} container justifyContent="center">
                         <Button
                           component={Link}
                           as={`/catalog/${product.handle}`}
@@ -235,8 +269,8 @@ export default function Catalog(props: Props) {
               </div>
             </Grid>
           </Grid>
-      </Container>
-        </Box>
+        </Container>
+      </Box>
       <Footer />
     </PageTransition>
   );
