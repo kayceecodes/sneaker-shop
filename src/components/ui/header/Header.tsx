@@ -65,7 +65,8 @@ function HideOnScroll(props: HideOnScrollProps) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  container: {  
+  container: {
+    width: "95%",  
     fontFamily: 'Inter',
     [theme.breakpoints.up('sm')]: {
       marginTop: 25,
@@ -98,13 +99,13 @@ export default function Header(props: Props) {
   const routes: Route[] = [
     { name: 'Home', link: '/', activeIndex: 0, tabStyle: 'tabHome' },
     {
-      name: 'Shoes',
+      name: 'Shop',
       link: '/catalog',
       activeIndex: 1,
       tabStyle: 'tabs',
     },
     // { name: 'Contact Us', link: '/contact-us', activeIndex: 2 },
-    { name: 'Cart', link: '/cart', activeIndex: 2, tabStyle: 'tabCart' },
+    { name: 'My Cart', link: '/cart', activeIndex: 2, tabStyle: 'tabCart' },
   ]
 
   useEffect(() => {

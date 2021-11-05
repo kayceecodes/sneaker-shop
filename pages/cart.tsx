@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     color: color.charcoal,
   },
   cartDetailsBox: {
-    borderBottom: `2px solid ${color.candyAppleRed}`,
+    borderBottom: `2px solid darkred`,
     padding: "20px 70px 30px",
   },
   checkoutBtn: {

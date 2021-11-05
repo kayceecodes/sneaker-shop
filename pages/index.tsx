@@ -49,16 +49,6 @@ const useStyles = makeStyles((theme) => ({
     transform: "translateY(288%)",
     backgroundColor: `${theme.palette.common.offWhite}`,
   },
-  innerBottomBorder: {
-    backgroundColor: `${theme.palette.common.offWhite}`,
-    position: "absolute",
-    width: "60%",
-    height: 0.8,
-    zIndex: 2,
-    left: "50%",
-    bottom: 25,
-    transform: "translate(-50%, -50%)",
-  },
   margin: {
     marginTop: 20,
   },
@@ -110,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%, -50%)",
     textTransform: "none",
     color: color.offWhite,
-    border: "2px solid #ffffff00",
+    border: "0.7px solid #ffffff00",
     // backgroundColor: 'rgba(0,0,0, 0.15)',
     padding: "12px 30px 7px",
     zIndex: 1,
@@ -120,8 +110,9 @@ const useStyles = makeStyles((theme) => ({
     transition: "border 0.7s, background-color 0.3s",
     backgroundColor: "#1a1a1aba",
     "&:hover": {
-      border: "2px solid #f6f5fa",
-      backgroundColor: "rgba(0,0,0,0.24)",
+      border: "0.7px solid #f6f5fa50",
+      borderRadius: '1px',
+      backgroundColor: "rgba(0,0,0,0.5)",
     },
     [theme.breakpoints.up("lg")]: {
       fontSize: "1.5rem",
@@ -129,12 +120,12 @@ const useStyles = makeStyles((theme) => ({
     },
     "&:hover $underline": {
       // backgroundColor: color.caribbeanBlue,
-      backgroundColor: color.offWhite,
+      backgroundColor: 'darkred',
     },
   },
   underline: {
     height: "1.5px",
-    width: "35%",
+    width: "65%",
     margin: "2px auto",
     backgroundColor: "transparent",
     transition: "background-color 0.3s",
@@ -160,7 +151,6 @@ const InnerAbstractBorders = () => {
   const classes = useStyles();
   return (
     <>
-      <div className={classes.innerBottomBorder} />
       <div className={classes.innerLeftBorder} />
       <div className={classes.innerRightBorder} />
     </>

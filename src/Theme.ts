@@ -64,7 +64,7 @@ export default createTheme({
       // main: white,
     },
     secondary: {
-      main: `${color.candyAppleRed}`,
+      main: '#672222',
     },
     error: {
       main: red.A400,
