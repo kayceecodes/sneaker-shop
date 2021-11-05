@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: '0 0 7px rgba(0,0,0,1)',
       maxWidth: 40,
       width: "100%",
-      backgroundColor: "darkred",
+      backgroundColor: `${theme.palette.secondary.main}`,
     }
   },
   flexContainer: {
@@ -107,10 +107,12 @@ function Headertabs(props: IProps) {
   );
 
   const CartIcon = (
+    <Link href="/cart">
     <Badge style={{position: 'absolute', top: '15px', right: '80px', color: '#dedede'}} badgeContent={countTotalItems(lineItems)} color="secondary">
       {/* <ShoppingBasket /> */}
       <ShoppingCart />
     </Badge>
+    </Link>
   );
 
   return (

@@ -125,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "&:hover $underline": {
       // backgroundColor: color.caribbeanBlue,
-      backgroundColor: 'darkred',
+      backgroundColor: `${theme.palette.secondary.main}`,
     },
   },
   underline: {
@@ -213,7 +213,7 @@ export default function Index({ pageAnimations }: Props) {
       src: "",
     },
     {
-      header: "Where Court Legends Live.",
+      header: "Where Court Legends Live",
       headerPos: {
         top: "10%",
         right: undefined,

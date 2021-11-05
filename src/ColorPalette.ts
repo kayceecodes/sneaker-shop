@@ -1,7 +1,8 @@
 export const color = 
 {
-  charcoal: '#444',
+  charcoal: '#4b4b4b',
   darkCharcoal: '#3a3a3a',
+  darkRed: '#672222',
   frostWhite: "#f3f8f9",
   candyAppleRed: '#FF0800',
   dimGray: "rgba(74, 88, 100, 1)",

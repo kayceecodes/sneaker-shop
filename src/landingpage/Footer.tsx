@@ -66,7 +66,7 @@ export default function Footer() {
         <Box pb={3} mb={3} mx={matches.sm ? 8 : 5} className={classes.section}>
           <Typography
             variant="h2"
-            style={{ fontSize: '2rem', fontFamily: 'Stardos Stencil' }}
+            style={{ fontSize: '2rem', fontFamily: 'Old Standard TT' }}
             className={classes.boldText}
           >
             The Gear Shop

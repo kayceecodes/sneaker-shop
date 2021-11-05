@@ -32,21 +32,21 @@ const useStyles = makeStyles((theme) => ({
     color: color.charcoal,
   },
   cartDetailsBox: {
-    borderBottom: `2px solid darkred`,
+    borderBottom: `2px solid ${theme.palette.secondary.light}`,
     padding: "20px 70px 30px",
   },
   checkoutBtn: {
-    color: theme.palette.common.dimGray,
+    color: theme.palette.common.darkRed,
     // font: '0.8rem Raleway',
     textTransform: "none",
     letterSpacing: "0.5px",
     padding: "12px 25px",
     boxShadow: "0px 0px 15px rgba(0,0,0,0.2)",
-    border: `1px solid ${theme.palette.common.dimGray}`,
+    border: `1px solid ${theme.palette.secondary.light}`,
     // transition: 'color 0.3s',
     marginBottom: "60px",
     "&:hover": {
-      color: color.caribbeanBlue,
+      color: `${theme.palette.secondary.light}`,
     },
   },
   disabled: {

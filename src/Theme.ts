@@ -44,11 +44,13 @@ declare module "@material-ui/core/styles/createTypography" {
 
 declare module "@material-ui/core/styles/createPalette" {
   interface CommonColors {    
-    dimGray: string
-    offWhite: string
-    frostBlue: string
     cadetBlue: string
     candyAppleRed: string
+    darkRed: string
+    charcoal: string
+    dimGray: string
+    frostBlue: string
+    offWhite: string
   }
 }
 
@@ -64,7 +66,7 @@ export default createTheme({
       // main: white,
     },
     secondary: {
-      main: '#672222',
+      main: `${color.darkRed}`,
     },
     error: {
       main: red.A400,
