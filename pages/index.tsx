@@ -18,6 +18,11 @@ interface Props {
   pageAnimations: PageAnimations;
   item: {
     header: string;
+    headerPos: {
+      top: string
+      left: string | undefined
+      right: string | undefined
+    }
     description: string;
     src: string;
     images: { mobile: { src: string }; desktop: { src: string } };
@@ -60,10 +65,10 @@ const useStyles = makeStyles((theme) => ({
   },
   imgHeader: {
     position: "absolute",
-    top: "10%",
-    left: "15%",
-    font: '1.5rem "Stardos Stencil"',
-    color: color.offWhite,
+    // top: "10%",
+    // left: "15%",
+    font: '1.5rem "Old Standard TT"',
+    color: "#eee",
     zIndex: 1,
     [theme.breakpoints.up("sm")]: {
       fontSize: "3rem",
@@ -140,7 +145,9 @@ function Item(props: Pick<Props, "item">) {
       <div className={classes.imgWrapper}>
         <div style={{ minHeight: matches.sm ? "100vh" : "50vh" }}>
           <Image layout="fill" objectFit="cover" src={props.item.src} />
-          <h1 className={classes.imgHeader}>{props.item.header}</h1>
+          <h1 style={{position: 'absolute', top: props.item.headerPos.top, left: props.item.headerPos.left ? props.item.headerPos.left : undefined, 
+          right: props.item.headerPos.right ? props.item.headerPos.right : undefined
+        }} className={classes.imgHeader}>{props.item.header}</h1>
         </div>
       </div>
     </Paper>
@@ -161,6 +168,11 @@ export default function Index({ pageAnimations }: Props) {
   var items = [
     {
       header: "The Gear Shop",
+      headerPos: {
+        top: "10%",
+        right: undefined,
+        left: "40%",
+      }, 
       description: "",
       images: {
         desktop: {
@@ -173,7 +185,12 @@ export default function Index({ pageAnimations }: Props) {
       src: "",
     },
     {
-      header: "Just Skate",
+      header: "They Follow Your Lead",
+      headerPos: {
+        top: "70%",
+        right: undefined,
+        left: "10%",
+      },
       description: "",
       images: {
         desktop: { src: "/assets/images/hero/hero-img-street-skate-9:6.jpg" },
@@ -182,7 +199,12 @@ export default function Index({ pageAnimations }: Props) {
       src: "",
     },
     {
-      header: "Just Run",
+      header: "Run. Train. Live.",
+      headerPos: {
+        top: "10%",
+        right: "80%",
+        left: undefined,
+      },
       description: "",
       images: {
         desktop: { src: "/assets/images/hero/hero-img-marathon-9:6.jpg" },
@@ -191,7 +213,12 @@ export default function Index({ pageAnimations }: Props) {
       src: "",
     },
     {
-      header: "Just Jump",
+      header: "Where Court Legends Live.",
+      headerPos: {
+        top: "10%",
+        right: undefined,
+        left: "40%",
+      },
       description: "",
       images: {
         desktop: { src: "/assets/images/hero/hero-img-shoot-ball-9:6.jpg" },
