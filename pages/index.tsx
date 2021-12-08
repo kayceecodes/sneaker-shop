@@ -167,7 +167,7 @@ const InnerAbstractBorders = () => {
 export default function Index({ pageAnimations }: Props) {
   var items = [
     {
-      header: "The Gear Shop",
+      header: "The Sneaker Shop",
       headerPos: {
         top: "10%",
         right: undefined,
@@ -202,7 +202,7 @@ export default function Index({ pageAnimations }: Props) {
       header: "Run. Train. Live.",
       headerPos: {
         top: "10%",
-        right: "80%",
+        right: "10%",
         left: undefined,
       },
       description: "",

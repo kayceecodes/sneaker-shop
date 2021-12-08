@@ -69,10 +69,10 @@ export default function Footer() {
             style={{ fontSize: '2rem', fontFamily: 'Old Standard TT' }}
             className={classes.boldText}
           >
-            The Gear Shop
+            The Sneaker Shop
           </Typography>
           <div className={classes.text}>
-            <span>The place to get your gear</span>
+            <span>The place to get your kicks</span>
             <br />
           </div>
           <strong className={classes.boldText}>Shop Here</strong>

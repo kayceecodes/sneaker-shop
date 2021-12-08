@@ -51,7 +51,7 @@ function MyApp(props: AppProps) {
   return (
     <React.Fragment>
       <Head>
-        <title>The Gear Shop</title>
+        <title>The Sneaker Shop</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"

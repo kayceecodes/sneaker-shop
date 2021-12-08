@@ -168,4 +168,4 @@ export default function CartPage(props: IProps) {
     </PageTransition>
   )
 } -->
-# Gear Shop
+# Sneaker Shop
